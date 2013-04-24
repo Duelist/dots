@@ -1,0 +1,43 @@
+Xcursor*theme:         Vanilla-DMZ-AA
+
+XTerm*font:            -*-ubuntu mono-medium-r-*-*-30-*-*-*-*-*-*-*
+XTerm*boldFont:        -*-ubuntu mono-medium-r-*-*-30-*-*-*-*-*-*-*
+XTerm*boldMode:        false
+XTerm*scrollBar:       false
+XTerm*saveLines:       32767
+XTerm*borderLess:      true
+XTerm*cursorColor:     cyan
+XTerm*cursorBlink:     true
+XTerm*pastableTabs:    true
+XTerm*jumpScroll:      true
+
+alsamixer*scrollBar:   false
+
+! Xoria256 {{{
+*foreground: #bcbcbc
+*background: #1a1a1a
+!black
+*color0:     #1a1a1a
+*color8:     #808080
+!red
+*color1:     #df8787
+*color9:     #b56e6e
+!green
+*color2:     #9ece9e
+*color10:    #c4edc4
+!yellow
+*color3:     #ffffaf
+*color11:    #d6d693
+!blue
+*color4:     #87afdf
+*color12:    #6e8eb5
+!magenta
+*color5:     #dfaf87
+*color13:    #b58e6e
+!cyan
+*color6:     #afafdf
+*color14:    #8e8eB5
+!white
+*color7:     #d0d0d0
+*color15:    #e2e2e5
+! }}}
