@@ -13,9 +13,9 @@ XTerm*jumpScroll:      true
 
 alsamixer*scrollBar:   false
 
-! FOREGROUND & BACKGROUND
-*foreground: #bcbcbc
-*background: #1a1a1a
+! BACKGROUND & FOREGROUND
+*background:  #2D2C28
+*foreground:  #A4A6AB
 
 ! BLACK
 *color0:      #5B5955
