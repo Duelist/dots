@@ -2,4 +2,5 @@ syntax enable
 
 colorscheme molokai
 
-set encoding=utf8
+set number
+set nowrap
