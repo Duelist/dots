@@ -10,6 +10,5 @@ PS1='[\u@\h \W]\$ '
 export EDITOR=vim
 export XDG_CONFIG_HOME=~/.config/
 
-alias ls='ls --color=auto'
-alias ll='ls -al --color=auto'
+alias ls='ls --color=auto -al'
 alias grep='grep --color=auto'
