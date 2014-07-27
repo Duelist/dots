@@ -1,7 +1,9 @@
+! XTerm
+
 Xcursor*theme:         Vanilla-DMZ-AA
 
-XTerm*font:            -*-ubuntu mono-medium-r-*-*-30-*-*-*-*-*-*-*
-XTerm*boldFont:        -*-ubuntu mono-medium-r-*-*-30-*-*-*-*-*-*-*
+XTerm*facename:        Inconsolata
+XTerm*faceSize:        11
 XTerm*boldMode:        false
 XTerm*scrollBar:       false
 XTerm*saveLines:       32767
@@ -10,41 +12,73 @@ XTerm*cursorColor:     cyan
 XTerm*cursorBlink:     true
 XTerm*pastableTabs:    true
 XTerm*jumpScroll:      true
+XTerm*renderFont:      true
 
 alsamixer*scrollBar:   false
 
-! BACKGROUND & FOREGROUND
-*background:  #2D2C28
-*foreground:  #A4A6AB
+! Xoria256 {{{
+*foreground: #bcbcbc
+*background: #1a1a1a
+!black
+*color0:     #1a1a1a
+*color8:     #808080
+!red
+*color1:     #df8787
+*color9:     #b56e6e
+!green
+*color2:     #9ece9e
+*color10:    #c4edc4
+!yellow
+*color3:     #ffffaf
+*color11:    #d6d693
+!blue
+*color4:     #87afdf
+*color12:    #6e8eb5
+!magenta
+*color5:     #dfaf87
+*color13:    #b58e6e
+!cyan
+*color6:     #afafdf
+*color14:    #8e8eB5
+!white
+*color7:     #d0d0d0
+*color15:    #e2e2e5
+! }}}
 
-! BLACK
-*color0:      #5B5955
-*color8:      #707277
+! URxvt
 
-! WHITE
-*color7:      #DBDDE2
-*color15:     #F7F9FF
+URxvt*font:            xft:Inconsolata:pixel-size=9
+URxvt*saveLines:       12000
+URxvt*scrollBar:       false
+URxvt*cursorColor:     cyan
+URxvt*cursorBlink:     true
 
-! RED
-*color1:      #C4756E
-*color9:      #F6A299
+! Xoria256 {{{
+URxvt*foreground: #bcbcbc
+URxvt*background: #1a1a1a
+!black
+URxvt*color0:     #1a1a1a
+URxvt*color8:     #808080
+!red
+URxvt*color1:     #df8787
+URxvt*color9:     #b56e6e
+!green
+URxvt*color2:     #9ece9e
+URxvt*color10:    #c4edc4
+!yellow
+URxvt*color3:     #ffffaf
+URxvt*color11:    #d6d693
+!blue
+URxvt*color4:     #87afdf
+URxvt*color12:    #6e8eb5
+!magenta
+URxvt*color5:     #dfaf87
+URxvt*color13:    #b58e6e
+!cyan
+URxvt*color6:     #afafdf
+URxvt*color14:    #8e8eB5
+!white
+URxvt*color7:     #d0d0d0
+URxvt*color15:    #e2e2e5
+! }}}
 
-! YELLOW
-*color3:      #9B8A4B
-*color11:     #CAB775
-
-! GREEN
-*color2:      #559A6A
-*color10:     #82C896
-
-! CYAN
-*color6:      #019BAA
-*color14:     #53CAD9
-
-! BLUE
-*color4:      #6A8DCA
-*color12:     #98BBFB
-
-! MAGENTA
-*color5:      #B577AC
-*color13:     #E5A4DB

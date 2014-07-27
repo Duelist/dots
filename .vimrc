@@ -1,8 +1,12 @@
+execute pathogen#infect()
+
 syntax enable
 
 colorscheme molokai
 
-set tabstop=4
-
+set expandtab
+set tabstop=2
 set number
 set nowrap
+
+nnoremap ; :

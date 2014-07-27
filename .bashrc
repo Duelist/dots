@@ -11,4 +11,5 @@ export EDITOR=vim
 export XDG_CONFIG_HOME=~/.config/
 
 alias ls='ls --color=auto'
+alias ll='ls -al --color=auto'
 alias grep='grep --color=auto'
