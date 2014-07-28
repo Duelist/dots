@@ -1,5 +1,5 @@
 execute pathogen#infect()
-
+call pathogen#helptags()
 syntax enable
 
 colorscheme molokai
@@ -10,3 +10,8 @@ set number
 set nowrap
 
 nnoremap ; :
+
+" vim-airline
+
+set laststatus=2
+let g:airline_theme = 'dark'
