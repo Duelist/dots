@@ -1,13 +1,14 @@
 execute pathogen#infect()
 call pathogen#helptags()
-syntax enable
 
+syntax enable
 colorscheme molokai
 
 set expandtab
 set tabstop=2
 set number
 set nowrap
+set noswapfile
 
 nnoremap ; :
 
