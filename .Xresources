@@ -50,7 +50,7 @@ alsamixer*scrollBar:   false
 URxvt*font:            xft:Inconsolata:pixel-size=9
 URxvt*saveLines:       12000
 URxvt*scrollBar:       false
-URxvt*cursorColor:     cyan
+URxvt*cursorColor:     #ccff33
 URxvt*cursorBlink:     true
 
 ! Xoria256 {{{
