@@ -9,6 +9,7 @@ set tabstop=2
 set number
 set nowrap
 set noswapfile
+set guioptions=
 
 nnoremap ; :
 
