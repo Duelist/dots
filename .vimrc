@@ -1,5 +1,19 @@
-execute pathogen#infect()
-call pathogen#helptags()
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'kien/ctrlp.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'JuliaLang/julia-vim'
+Plugin 'tpope/vim-fugitive.vim'
+Plugin 'bling/vim-airline.vim'
+
+call vundle#end()
+
 syntax enable
 
 colorscheme molokai
