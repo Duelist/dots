@@ -8,9 +8,10 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
 Plugin 'JuliaLang/julia-vim'
-Plugin 'tpope/vim-fugitive.vim'
-Plugin 'bling/vim-airline.vim'
+Plugin 'bling/vim-airline'
 
 call vundle#end()
 
