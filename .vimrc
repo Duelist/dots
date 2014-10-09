@@ -11,6 +11,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'JuliaLang/julia-vim'
+Plugin 'klen/python-mode'
 Plugin 'bling/vim-airline'
 
 call vundle#end()
@@ -21,6 +22,7 @@ colorscheme molokai
 
 set encoding=utf-8
 set tabstop=2
+set completeopt=menu
 set number
 set nowrap
 set noswapfile
@@ -36,6 +38,17 @@ nmap <leader>bq :bp <BAR> bd #<cr>
 nmap <leader>bl :ls<cr>
 
 nnoremap ; :
+
+" OS-specific
+
+if has("gui_macvim")
+  set guifont=Menlo:h14
+  set guioptions=
+endif
+
+" python-mode
+
+let g:pymode_doc = 0
 
 " vim-airline
 
