@@ -12,6 +12,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'JuliaLang/julia-vim'
 Plugin 'klen/python-mode'
+Plugin 'kchmck/vim-coffee-script'
 Plugin 'bling/vim-airline'
 
 call vundle#end()
