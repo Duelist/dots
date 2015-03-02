@@ -12,7 +12,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'JuliaLang/julia-vim'
 Plugin 'klen/python-mode'
+Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'mxw/vim-jsx'
 Plugin 'bling/vim-airline'
 
 call vundle#end()
@@ -50,6 +52,10 @@ endif
 " python-mode
 
 let g:pymode_doc = 0
+
+" vim-jsx
+
+let g:jsx_ext_required = 0
 
 " vim-airline
 
