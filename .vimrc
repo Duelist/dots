@@ -47,6 +47,9 @@ nnoremap ; :
 if has("gui_macvim")
   set guifont=Menlo:h14
   set guioptions=
+elseif has("gui_vimr")
+  set guifont=Menlo:h14
+  set guioptions=
 endif
 
 " python-mode
