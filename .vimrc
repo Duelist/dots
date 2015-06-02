@@ -6,10 +6,12 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'trusktr/seti.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/syntastic'
 Plugin 'JuliaLang/julia-vim'
 Plugin 'klen/python-mode'
 Plugin 'pangloss/vim-javascript'
