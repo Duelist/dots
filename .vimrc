@@ -17,6 +17,7 @@ Plugin 'klen/python-mode'
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mxw/vim-jsx'
+Plugin 'heavenshell/vim-jsdoc'
 Plugin 'bling/vim-airline'
 
 call vundle#end()
