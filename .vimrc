@@ -63,6 +63,11 @@ let g:pymode_doc = 0
 
 let g:jsx_ext_required = 0
 
+" vim-jsdoc
+
+let g:jsdoc_allow_input_prompt = 1
+let g:jsdoc_input_description = 1
+
 " vim-airline
 
 set laststatus=2
