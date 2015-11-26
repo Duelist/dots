@@ -34,7 +34,7 @@ set nowrap
 set noswapfile
 set expandtab
 
-let mapleader=","
+let mapleader=','
 
 nmap <space> <leader>
 nmap <leader>T :enew<cr>
@@ -47,12 +47,20 @@ nnoremap ; :
 
 " OS-specific
 
-if has("gui_macvim")
+if has('gui_macvim')
   set guifont=Menlo:h14
   set guioptions=
-elseif has("gui_vimr")
+elseif has('gui_vimr')
   set guifont=Menlo:h14
   set guioptions=
+endif
+
+" Executable-specific
+
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_use_caching = 0
 endif
 
 " python-mode
