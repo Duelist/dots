@@ -4,13 +4,16 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'trusktr/seti.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
 Plugin 'rking/ag.vim'
 Plugin 'JuliaLang/julia-vim'
@@ -22,6 +25,7 @@ Plugin 'heavenshell/vim-jsdoc'
 Plugin 'bling/vim-airline'
 
 call vundle#end()
+filetype plugin indent on
 
 syntax enable
 
