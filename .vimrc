@@ -12,6 +12,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/syntastic'
+Plugin 'rking/ag.vim'
 Plugin 'JuliaLang/julia-vim'
 Plugin 'klen/python-mode'
 Plugin 'pangloss/vim-javascript'
@@ -42,6 +43,8 @@ nmap <leader>l :bnext<cr>
 nmap <leader>h :bprevious<cr>
 nmap <leader>bq :bp <BAR> bd #<cr>
 nmap <leader>bl :ls<cr>
+
+noremap K :Ag '\b<C-R><C-W>\b'<CR>:cw<CR>
 
 nnoremap ; :
 
