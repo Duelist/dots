@@ -7,7 +7,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'trusktr/seti.vim'
-Plugin 'kien/ctrlp.vim'
+Plugin 'rking/ag.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
@@ -15,7 +16,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
-Plugin 'rking/ag.vim'
 Plugin 'JuliaLang/julia-vim'
 Plugin 'klen/python-mode'
 Plugin 'pangloss/vim-javascript'
@@ -23,6 +23,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'mxw/vim-jsx'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'bling/vim-airline'
+Plugin 'ryanoasis/vim-devicons'
 
 call vundle#end()
 filetype plugin indent on
@@ -41,12 +42,14 @@ set expandtab
 
 let mapleader=','
 
+map <C-n> :NERDTreeToggle<CR>
+
 nmap <space> <leader>
-nmap <leader>T :enew<cr>
-nmap <leader>l :bnext<cr>
-nmap <leader>h :bprevious<cr>
-nmap <leader>bq :bp <BAR> bd #<cr>
-nmap <leader>bl :ls<cr>
+nmap <leader>T :enew<<CR>
+nmap <leader>l :bnext<CR>
+nmap <leader>h :bprevious<CR>
+nmap <leader>bq :bp <BAR> bd #<CR>
+nmap <leader>bl :ls<CR>
 
 noremap K :Ag '\b<C-R><C-W>\b'<CR>:cw<CR>
 
@@ -54,11 +57,8 @@ nnoremap ; :
 
 " OS-specific
 
-if has('gui_macvim')
-  set guifont=Menlo:h14
-  set guioptions=
-elseif has('gui_vimr')
-  set guifont=Menlo:h14
+if has('gui_macvim') || has('gui_vimr')
+  set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\ Nerd\ Font\ Complete:h14
   set guioptions=
 endif
 
@@ -87,6 +87,7 @@ let g:jsdoc_input_description = 1
 
 set laststatus=2
 let g:airline_theme = 'dark'
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#fnamemod = ':t'
