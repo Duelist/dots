@@ -16,6 +16,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
+Plugin 'mhinz/vim-startify'
 Plugin 'JuliaLang/julia-vim'
 Plugin 'klen/python-mode'
 Plugin 'pangloss/vim-javascript'
@@ -30,16 +31,21 @@ filetype plugin indent on
 
 syntax enable
 
-colorscheme molokai
-
 set encoding=utf-8
+
 set expandtab
 set shiftwidth=2
 set softtabstop=2
+set ignorecase
 set completeopt=menu
+
 set number
+set colorcolumn=80
+set cursorline
 set nowrap
 set noswapfile
+
+colorscheme molokai
 
 let mapleader=','
 
