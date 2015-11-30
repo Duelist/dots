@@ -33,12 +33,13 @@ syntax enable
 colorscheme molokai
 
 set encoding=utf-8
-set tabstop=2
+set expandtab
+set shiftwidth=2
+set softtabstop=2
 set completeopt=menu
 set number
 set nowrap
 set noswapfile
-set expandtab
 
 let mapleader=','
 
@@ -57,8 +58,8 @@ nnoremap ; :
 
 " OS-specific
 
-if has('gui_macvim') || has('gui_vimr')
-  set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\ Nerd\ Font\ Complete:h14
+if has('gui_running')
+  set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\ Nerd\ Font\ Complete:h13
   set guioptions=
 endif
 
