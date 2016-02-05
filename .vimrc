@@ -17,11 +17,13 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
 Plugin 'mhinz/vim-startify'
+Plugin 'janko-m/vim-test'
 Plugin 'JuliaLang/julia-vim'
 Plugin 'klen/python-mode'
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mxw/vim-jsx'
+Plugin 'moll/vim-node'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'bling/vim-airline'
 Plugin 'ryanoasis/vim-devicons'
@@ -52,7 +54,6 @@ let mapleader=','
 map <C-n> :NERDTreeToggle<CR>
 
 nmap <space> <leader>
-nmap <leader>T :enew<<CR>
 nmap <leader>l :bnext<CR>
 nmap <leader>h :bprevious<CR>
 nmap <leader>bq :bp <BAR> bd #<CR>
@@ -65,7 +66,7 @@ nnoremap ; :
 " OS-specific
 
 if has('gui_running')
-  set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\ Nerd\ Font\ Complete:h13
+  set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\ Nerd\ Font\ Complete:h16
   set guioptions=
 endif
 
@@ -76,6 +77,11 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
   let g:ctrlp_use_caching = 0
 endif
+
+" vim-test
+
+nmap <leader>t :TestNearest<CR>
+nmap <leader>T :TestFile<<CR>
 
 " python-mode
 
