@@ -1,53 +1,67 @@
-set nocompatible
-filetype off
+" Plugins
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin()
 
-Plugin 'VundleVim/Vundle.vim'
+" Color schemes
+Plug 'trusktr/seti.vim'
+Plug 'tomasr/molokai'
+Plug 'junegunn/seoul256.vim'
 
-Plugin 'trusktr/seti.vim'
-Plugin 'rking/ag.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
-Plugin 'mhinz/vim-startify'
-Plugin 'janko-m/vim-test'
-Plugin 'JuliaLang/julia-vim'
-Plugin 'klen/python-mode'
-Plugin 'pangloss/vim-javascript'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'mxw/vim-jsx'
-Plugin 'moll/vim-node'
-Plugin 'heavenshell/vim-jsdoc'
-Plugin 'bling/vim-airline'
-Plugin 'ryanoasis/vim-devicons'
+" Utility
+Plug 'mhinz/vim-startify'
+Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdcommenter'
+Plug 'janko-m/vim-test'
 
-call vundle#end()
-filetype plugin indent on
+" Search
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
-syntax enable
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'junegunn/vim-github-dashboard'
 
+" Language-specific
+Plug 'klen/python-mode'
+Plug 'heavenshell/vim-jsdoc'
+
+" Syntax-highlighting
+Plug 'scrooloose/syntastic'
+Plug 'JuliaLang/julia-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'kchmck/vim-coffee-script'
+Plug 'mxw/vim-jsx'
+Plug 'moll/vim-node'
+
+" Style
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ryanoasis/vim-devicons'
+Plug 'junegunn/vim-emoji'
+
+" Vimscript
+Plug 'junegunn/vader.vim'
+
+call plug#end()
+
+set colorcolumn=80
+set completeopt=menu
+set cursorline
 set encoding=utf-8
-
 set expandtab
+set ignorecase
+set noswapfile
+set nowrap
+set number
+set relativenumber
 set shiftwidth=2
 set softtabstop=2
-set ignorecase
-set completeopt=menu
 
-set number
-set colorcolumn=80
-set cursorline
-set nowrap
-set noswapfile
-
-colorscheme molokai
+colorscheme seoul256
 
 let mapleader=','
 
@@ -78,6 +92,14 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
+" fzf.vim
+
+nmap <c-P> :FZF<CR>
+
+" vim-emoji
+
+set completefunc=emoji#complete
+
 " vim-test
 
 nmap <leader>t :TestNearest<CR>
@@ -99,7 +121,7 @@ let g:jsdoc_input_description = 1
 " vim-airline
 
 set laststatus=2
-let g:airline_theme = 'dark'
+let g:airline_theme = 'zenburn'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
