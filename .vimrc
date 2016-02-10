@@ -21,7 +21,7 @@ Plug 'junegunn/fzf.vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/vim-github-dashboard'
 
@@ -30,12 +30,11 @@ Plug 'klen/python-mode'
 Plug 'heavenshell/vim-jsdoc'
 
 " Syntax-highlighting
-Plug 'scrooloose/syntastic'
 Plug 'JuliaLang/julia-vim'
 Plug 'pangloss/vim-javascript'
-Plug 'kchmck/vim-coffee-script'
 Plug 'mxw/vim-jsx'
 Plug 'moll/vim-node'
+Plug 'scrooloose/syntastic'
 
 " Style
 Plug 'vim-airline/vim-airline'
@@ -51,7 +50,6 @@ call plug#end()
 set colorcolumn=80
 set completeopt=menu
 set cursorline
-set encoding=utf-8
 set expandtab
 set ignorecase
 set noswapfile
@@ -82,6 +80,12 @@ nnoremap ; :
 if has('gui_running')
   set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\ Nerd\ Font\ Complete:h16
   set guioptions=
+endif
+
+" NeoVim-specific
+
+if !has('nvim')
+  set encoding=utf-8
 endif
 
 " Executable-specific
