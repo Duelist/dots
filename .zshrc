@@ -17,8 +17,8 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search", as:plugin
 zplug "zsh-users/zsh-completions", as:plugin, of:"src"
 
-zplug "mafredri/zsh-async"
-zplug "sindresorhus/pure"
+zplug "plugins/git", from:oh-my-zsh, if:"which git"
+zplug "themes/cloud", from:oh-my-zsh
 
 zplug load
 
