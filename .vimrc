@@ -68,10 +68,12 @@ map <C-n> :NERDTreeToggle<CR>
 nmap <space> <leader>
 nmap <leader>l :bnext<CR>
 nmap <leader>h :bprevious<CR>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 nmap <leader>bq :bp <BAR> bd #<CR>
 nmap <leader>bl :ls<CR>
-
-noremap K :Ag '\b<C-R><C-W>\b'<CR>:cw<CR>
 
 nnoremap ; :
 
@@ -84,7 +86,12 @@ endif
 
 " NeoVim-specific
 
-if !has('nvim')
+if has('nvim')
+  tnoremap <C-h> <C-\><C-n><C-w>h
+  tnoremap <C-j> <C-\><C-n><C-w>j
+  tnoremap <C-k> <C-\><C-n><C-w>k
+  tnoremap <C-l> <C-\><C-n><C-w>l
+else
   set encoding=utf-8
 endif
 
@@ -96,6 +103,11 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
+
+" vim-plug
+
+nnoremap <leader>u :PlugUpdate<CR>
+
 " fzf.vim
 
 nmap <c-P> :FZF<CR>
@@ -106,8 +118,8 @@ set completefunc=emoji#complete
 
 " vim-test
 
-nmap <leader>t :TestNearest<CR>
-nmap <leader>T :TestFile<<CR>
+nnoremap <leader>t :TestNearest<CR>
+nnoremap <leader>T :TestFile<<CR>
 
 " python-mode
 
