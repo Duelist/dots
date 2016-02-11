@@ -47,6 +47,7 @@ Plug 'junegunn/vader.vim'
 
 call plug#end()
 
+set backspace=eol,indent,start
 set colorcolumn=80
 set completeopt=menu
 set cursorline
