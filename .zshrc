@@ -42,7 +42,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export EDITOR=nvim
 
 # FZF
-export PATH="$PATH:/Users/Admin/.fzf/bin"
+export PATH="$PATH:~/.fzf/bin"
 export FZF_DEFAULT_COMMAND='ag -g ""'
 
 
