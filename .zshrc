@@ -1,13 +1,11 @@
+#########
+# ZPlug #
+#########
+
 if [ ! -f ~/.zplug/zplug ]; then
   echo "ZPlug required: https://www.github.com/b4b4r07/zplug"
   return
 fi
-
-
-
-#########
-# ZPlug #
-#########
 
 source ~/.zplug/zplug
 
@@ -30,7 +28,7 @@ zplug load
 PROMPT='%{$fg[magenta]%}%c $(git_prompt_info) % %{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[magenta]%}[%{$fg[cyan]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[magenta]%}] %{$fg_bold[yellow]%}⚡"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[magenta]%}]"
 
