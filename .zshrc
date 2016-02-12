@@ -17,10 +17,22 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search", as:plugin
 zplug "zsh-users/zsh-completions", as:plugin, of:"src"
 
-zplug "plugins/git", from:oh-my-zsh, if:"which git"
-zplug "themes/cloud", from:oh-my-zsh
+zplug "lib/git", from:oh-my-zsh
 
 zplug load
+
+
+
+##########
+# PROMPT #
+##########
+
+PROMPT='%{$fg[magenta]%}%c $(git_prompt_info) % %{$reset_color%}'
+
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[magenta]%}[%{$fg[cyan]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[magenta]%}] %{$fg_bold[yellow]%}⚡"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[magenta]%}]"
 
 
 
