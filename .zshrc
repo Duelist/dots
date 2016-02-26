@@ -15,8 +15,6 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search", as:plugin
 zplug "zsh-users/zsh-completions", as:plugin, of:"src"
 
-zplug "lib/git", from:oh-my-zsh
-
 zplug load
 
 
@@ -25,12 +23,32 @@ zplug load
 # PROMPT #
 ##########
 
+setopt PROMPT_SUBST
+autoload -U colors && colors
+
 PROMPT='%{$fg[magenta]%}%c $(git_prompt_info) % %{$reset_color%}'
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[magenta]%}[%{$fg[cyan]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX=""
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[magenta]%}] %{$fg_bold[yellow]%}⚡"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[magenta]%}]"
+GIT_PROMPT_PREFIX="%{$fg[magenta]%}[%{$fg[cyan]%}"
+GIT_PROMPT_SUFFIX=""
+GIT_PROMPT_DIRTY="%{$fg[magenta]%}] %{$fg_bold[yellow]%}⚡"
+GIT_PROMPT_CLEAN="%{$fg[magenta]%}]"
+
+function git_prompt_info() {
+  local ref
+  ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
+  ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
+  echo "$GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$GIT_PROMPT_SUFFIX"
+}
+
+function parse_git_dirty() {
+  local STATUS
+  STATUS=$(command git status --porcelain --untracked-files=no 2> /dev/null | tail -n1)
+  if [[ -n $STATUS ]]; then
+    echo "$GIT_PROMPT_DIRTY"
+  else
+    echo "$GIT_PROMPT_CLEAN"
+  fi
+}
 
 
 
