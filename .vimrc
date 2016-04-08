@@ -10,6 +10,7 @@ Plug 'junegunn/seoul256.vim'
 " Utility
 Plug 'mhinz/vim-startify'
 Plug 'mattn/emmet-vim'
+Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
@@ -81,6 +82,10 @@ nnoremap ; :
 
 " OS-specific
 
+if has('mac')
+  set clipboard=unnamed
+endif
+
 if has('gui_running')
   set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\ Nerd\ Font\ Complete:h16
   set guioptions=
@@ -116,6 +121,11 @@ nnoremap <leader>u :PlugUpdate<CR>
 " fzf.vim
 
 nmap <c-P> :FZF<CR>
+
+" vim-easy-align
+
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
 
 " vim-emoji
 

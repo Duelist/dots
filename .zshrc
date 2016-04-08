@@ -72,3 +72,5 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 alias vim="nvim"
 alias ls="ls -alG"
 alias grep="grep --color=auto"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
