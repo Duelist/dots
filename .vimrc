@@ -3,17 +3,17 @@
 call plug#begin()
 
 " Color schemes
-Plug 'trusktr/seti.vim'
 Plug 'tomasr/molokai'
 Plug 'junegunn/seoul256.vim'
+Plug 'trusktr/seti.vim'
 
 " Utility
-Plug 'mhinz/vim-startify'
 Plug 'mattn/emmet-vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'tpope/vim-surround'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'junegunn/vim-easy-align'
+Plug 'mhinz/vim-startify'
+Plug 'tpope/vim-surround'
 Plug 'janko-m/vim-test'
 
 " Search
@@ -21,9 +21,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Git
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
 "Plug 'airblade/vim-gitgutter'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/vim-github-dashboard'
 
 " Language-specific
@@ -32,10 +32,10 @@ Plug 'heavenshell/vim-jsdoc'
 
 " Syntax-highlighting
 Plug 'JuliaLang/julia-vim'
+Plug 'scrooloose/syntastic'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'moll/vim-node'
-Plug 'scrooloose/syntastic'
 
 " Style
 Plug 'vim-airline/vim-airline'
@@ -47,6 +47,10 @@ Plug 'junegunn/vim-emoji'
 Plug 'junegunn/vader.vim'
 
 call plug#end()
+
+
+
+" Standard settings
 
 set backspace=eol,indent,start
 set colorcolumn=80
@@ -80,6 +84,8 @@ nmap <leader>bl :ls<CR>
 
 nnoremap ; :
 
+
+
 " OS-specific
 
 if has('mac')
@@ -90,6 +96,8 @@ if has('gui_running')
   set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\ Nerd\ Font\ Complete:h16
   set guioptions=
 endif
+
+
 
 " NeoVim-specific
 
@@ -105,6 +113,8 @@ else
   set encoding=utf-8
 endif
 
+
+
 " Executable-specific
 
 if executable('ag')
@@ -114,9 +124,6 @@ if executable('ag')
 endif
 
 
-" vim-plug
-
-nnoremap <leader>u :PlugUpdate<CR>
 
 " fzf.vim
 
@@ -127,27 +134,9 @@ nmap <c-P> :FZF<CR>
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
-" vim-emoji
-
-set completefunc=emoji#complete
-
-" vim-test
-
-nnoremap <leader>t :TestNearest<CR>
-nnoremap <leader>T :TestFile<<CR>
-
 " python-mode
 
 let g:pymode_doc = 0
-
-" vim-jsx
-
-let g:jsx_ext_required = 0
-
-" vim-jsdoc
-
-let g:jsdoc_allow_input_prompt = 1
-let g:jsdoc_input_description = 1
 
 " vim-airline
 
@@ -157,3 +146,30 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#fnamemod = ':t'
+
+" vim-easy-align
+
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+
+" vim-emoji
+
+set completefunc=emoji#complete
+
+" vim-jsdoc
+
+let g:jsdoc_allow_input_prompt = 1
+let g:jsdoc_input_description = 1
+
+" vim-jsx
+
+let g:jsx_ext_required = 0
+
+" vim-plug
+
+nnoremap <leader>u :PlugUpdate<CR>
+
+" vim-test
+
+nnoremap <leader>t :TestNearest<CR>
+nnoremap <leader>T :TestFile<<CR>
