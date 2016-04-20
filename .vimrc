@@ -65,7 +65,9 @@ set relativenumber
 set shiftwidth=2
 set softtabstop=2
 
-colorscheme seoul256
+set background=dark
+let base16colorspace=256
+colorscheme base16-ocean
 
 let mapleader=','
 
@@ -93,7 +95,7 @@ if has('mac')
 endif
 
 if has('gui_running')
-  set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\ Nerd\ Font\ Complete:h16
+  set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\ Nerd\ Font\ Complete:h13
   set guioptions=
 endif
 
@@ -129,14 +131,18 @@ endif
 
 nmap <c-P> :FZF<CR>
 
+" python-mode
+
+let g:pymode_doc = 0
+
+" syntastic
+
+let g:syntastic_javascript_checkers = ['eslint']
+
 " vim-easy-align
 
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
-
-" python-mode
-
-let g:pymode_doc = 0
 
 " vim-airline
 

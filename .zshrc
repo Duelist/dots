@@ -58,6 +58,7 @@ function parse_git_dirty() {
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export EDITOR=nvim
+export TERM=xterm-256color
 
 # FZF
 export PATH="$PATH:~/.fzf/bin"
@@ -74,3 +75,20 @@ alias ls="ls -alG"
 alias grep="grep --color=auto"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+
+##########
+# Base16 #
+##########
+
+BASE16_SHELL="$HOME/.config/base16-shell/base16-ocean.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+
+
+##############
+# Tmuxinator #
+##############
+
+source ~/.bin/tmuxinator.zsh
