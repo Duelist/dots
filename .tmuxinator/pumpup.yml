@@ -29,7 +29,9 @@ root: ~/projects/pumpup/api
 
 windows:
   - editor:
-      layout: even-horizontal
+      layout: b055,272x62,0,0{135x62,0,0,0,136x62,136,0[136x31,136,0,1,136x30,136,32{68x30,136,32,3,67x30,205,32,4}]}
       panes:
-        - zsh
+        -
+        - npm run ssh megaman
+        - cd ../mobile && npm start
         - npm run start-staging-local
