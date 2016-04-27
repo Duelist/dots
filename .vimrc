@@ -12,6 +12,7 @@ Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'junegunn/vim-easy-align'
+Plug 'easymotion/vim-easymotion'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'janko-m/vim-test'
@@ -67,7 +68,7 @@ set softtabstop=2
 
 set background=dark
 let base16colorspace=256
-colorscheme base16-ocean
+colorscheme base16-tomorrow
 
 let mapleader=','
 
@@ -104,6 +105,7 @@ endif
 " NeoVim-specific
 
 if has('nvim')
+
   tnoremap <C-h> <C-\><C-n><C-w>h
   tnoremap <C-j> <C-\><C-n><C-w>j
   tnoremap <C-k> <C-\><C-n><C-w>k
@@ -111,6 +113,7 @@ if has('nvim')
 
   autocmd BufWinEnter,WinEnter term://* startinsert
   autocmd BufLeave term://* stopinsert
+
 else
   set encoding=utf-8
 endif
@@ -147,6 +150,7 @@ xmap ga <Plug>(EasyAlign)
 " vim-airline
 
 set laststatus=2
+
 let g:airline_theme = 'zenburn'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -157,6 +161,15 @@ let g:airline#extensions#fnamemod = ':t'
 
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
+
+" vim-easy-align
+
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
+
+nmap s <Plug>(easymotion-overwin-f2)
+nmap <Leader>j <Plug>(easymotion-j)
+nmap <Leader>k <Plug>(easymotion-k)
 
 " vim-emoji
 
