@@ -31,11 +31,12 @@ Plug 'junegunn/vim-github-dashboard'
 Plug 'klen/python-mode'
 Plug 'heavenshell/vim-jsdoc'
 
-" Syntax-highlighting
+" Syntax
 Plug 'JuliaLang/julia-vim'
 Plug 'scrooloose/syntastic'
-Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'othree/yajs.vim'
+Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'moll/vim-node'
 
 " Style
@@ -96,7 +97,7 @@ if has('mac')
 endif
 
 if has('gui_running')
-  set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\ Nerd\ Font\ Complete:h13
+  set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\ Nerd\ Font\ Complete:h14
   set guioptions=
 endif
 
@@ -133,6 +134,10 @@ endif
 " fzf.vim
 
 nmap <c-P> :FZF<CR>
+
+" javascript-libraries-syntax.vim
+
+let g:used_javascript_libs = 'react,underscore'
 
 " python-mode
 
