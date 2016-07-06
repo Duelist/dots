@@ -34,6 +34,7 @@ Plug 'heavenshell/vim-jsdoc'
 " Syntax
 Plug 'JuliaLang/julia-vim'
 Plug 'scrooloose/syntastic'
+Plug 'gavocanov/vim-js-indent'
 Plug 'mxw/vim-jsx'
 Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
@@ -147,11 +148,6 @@ let g:pymode_doc = 0
 
 let g:syntastic_javascript_checkers = ['eslint']
 
-" vim-easy-align
-
-nmap ga <Plug>(EasyAlign)
-xmap ga <Plug>(EasyAlign)
-
 " vim-airline
 
 set laststatus=2
@@ -167,14 +163,15 @@ let g:airline#extensions#fnamemod = ':t'
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
-" vim-easy-align
+nmap <leader>= <Plug>(EasyAlign)ip-=
+nmap <leader>: <Plug>(EasyAlign)ip*<Right>:
+
+" vim-easymotion
 
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 
 nmap s <Plug>(easymotion-overwin-f2)
-nmap <Leader>j <Plug>(easymotion-j)
-nmap <Leader>k <Plug>(easymotion-k)
 
 " vim-emoji
 
