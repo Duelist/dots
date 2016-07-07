@@ -41,6 +41,7 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'moll/vim-node'
 
 " Style
+Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
@@ -53,12 +54,19 @@ call plug#end()
 
 
 
+" Colorscheme settings
+
+set background=dark
+let base16colorspace=256
+colorscheme base16-tomorrow
+
+
+
 " Standard settings
 
 set backspace=eol,indent,start
 set colorcolumn=80
 set completeopt=menu
-set cursorline
 set expandtab
 set ignorecase
 set noswapfile
@@ -67,10 +75,6 @@ set number
 set relativenumber
 set shiftwidth=2
 set softtabstop=2
-
-set background=dark
-let base16colorspace=256
-colorscheme base16-tomorrow
 
 let mapleader=','
 
