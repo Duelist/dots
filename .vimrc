@@ -167,8 +167,8 @@ let g:airline#extensions#fnamemod = ':t'
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
-nmap <leader>= <Plug>(EasyAlign)ip-=
-nmap <leader>: <Plug>(EasyAlign)ip*<Right>:
+nmap <leader>= vi}ga=
+nmap <leader>: vi}ga*<Right>:
 
 " vim-easymotion
 
