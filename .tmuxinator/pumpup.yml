@@ -33,5 +33,5 @@ windows:
       panes:
         -
         - npm run ssh megaman
-        - cd ../mobile && npm start
-        - npm run start-staging-local
+        - cd ../mobile
+        -

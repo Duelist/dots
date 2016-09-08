@@ -87,6 +87,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
 inoremap jk <Esc>
 nmap <leader>bq :bp <BAR> bd #<CR>
 nmap <leader>bl :ls<CR>
@@ -143,6 +144,12 @@ nmap <c-P> :FZF<CR>
 " javascript-libraries-syntax.vim
 
 let g:used_javascript_libs = 'react,underscore'
+
+" nerdcommenter
+let g:NERDSpaceDelims = 1
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
+
 
 " python-mode
 
