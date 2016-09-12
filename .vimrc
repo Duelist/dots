@@ -9,8 +9,8 @@ Plug 'trusktr/seti.vim'
 
 " Utility
 Plug 'mattn/emmet-vim'
-Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
 Plug 'mhinz/vim-startify'
@@ -24,7 +24,6 @@ Plug 'junegunn/fzf.vim'
 " Git
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
-"Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/vim-github-dashboard'
 
 " Language-specific
@@ -53,17 +52,13 @@ Plug 'junegunn/vader.vim'
 call plug#end()
 
 
-
 " Colorscheme settings
-
 set background=dark
 let base16colorspace=256
 colorscheme base16-tomorrow
 
 
-
 " Standard settings
-
 set backspace=eol,indent,start
 set colorcolumn=80
 set completeopt=menu
@@ -95,9 +90,7 @@ nmap <leader>bl :ls<CR>
 nnoremap ; :
 
 
-
 " OS-specific
-
 if has('mac')
   set clipboard=unnamed
 endif
@@ -108,9 +101,7 @@ if has('gui_running')
 endif
 
 
-
 " NeoVim-specific
-
 if has('nvim')
 
   tnoremap <C-h> <C-\><C-n><C-w>h
@@ -126,9 +117,7 @@ else
 endif
 
 
-
 " Executable-specific
-
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
@@ -136,31 +125,23 @@ if executable('ag')
 endif
 
 
-
 " fzf.vim
-
 nmap <c-P> :FZF<CR>
 
+
 " javascript-libraries-syntax.vim
-
 let g:used_javascript_libs = 'react,underscore'
-
-" nerdcommenter
-let g:NERDSpaceDelims = 1
-let g:NERDCommentEmptyLines = 1
-let g:NERDTrimTrailingWhitespace = 1
 
 
 " python-mode
-
 let g:pymode_doc = 0
 
-" syntastic
 
+" syntastic
 let g:syntastic_javascript_checkers = ['eslint']
 
-" vim-airline
 
+" vim-airline
 set laststatus=2
 
 let g:airline_theme = 'zenburn'
@@ -169,40 +150,40 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#fnamemod = ':t'
 
-" vim-easy-align
 
+" vim-easy-align
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
 nmap <leader>= vi}ga=
 nmap <leader>: vi}ga*<Right>:
 
-" vim-easymotion
 
+" vim-easymotion
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 
 nmap s <Plug>(easymotion-overwin-f2)
 
-" vim-emoji
 
+" vim-emoji
 set completefunc=emoji#complete
 
-" vim-jsdoc
 
+" vim-jsdoc
 let g:jsdoc_allow_input_prompt = 1
 let g:jsdoc_input_description = 1
 let g:jsdoc_tags = { 'returns': 'return' }
 
-" vim-jsx
 
+" vim-jsx
 let g:jsx_ext_required = 0
 
-" vim-plug
 
+" vim-plug
 nnoremap <leader>u :PlugUpdate<CR>
 
-" vim-test
 
+" vim-test
 nnoremap <leader>t :TestNearest<CR>
 nnoremap <leader>T :TestFile<<CR>
