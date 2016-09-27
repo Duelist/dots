@@ -2,21 +2,21 @@
 # ZPlug #
 #########
 
-if [ ! -f ~/.zplug/zplug ]; then
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+if [ ! -d $ZPLUG_HOME ]; then
   echo "ZPlug required: https://www.github.com/b4b4r07/zplug"
   return
 fi
 
-source ~/.zplug/zplug
-
-zplug "b4b4r07/zplug"
+zplug "zplug/zplug"
 
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search", as:plugin
 zplug "zsh-users/zsh-completions", as:plugin, use:"src"
 
 zplug load
-
 
 
 ##########
@@ -51,7 +51,6 @@ function parse_git_dirty() {
 }
 
 
-
 ###########
 # Exports #
 ###########
@@ -65,7 +64,6 @@ export PATH="$PATH:~/.fzf/bin"
 export FZF_DEFAULT_COMMAND='ag -g ""'
 
 
-
 ###########
 # Aliases #
 ###########
@@ -77,7 +75,6 @@ alias grep="grep --color=auto"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
-
 ##########
 # Base16 #
 ##########
@@ -86,9 +83,15 @@ BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-tomorrow-night.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 
-
 ##############
 # Tmuxinator #
 ##############
 
 source ~/.bin/tmuxinator.zsh
+
+
+##########
+# Travis #
+##########
+
+[ -f /Users/Admin/.travis/travis.sh ] && source /Users/Admin/.travis/travis.sh
