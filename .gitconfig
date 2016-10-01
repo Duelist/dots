@@ -1,0 +1,3 @@
+[alias]
+  log = log --color --graph --pretty=format:'%Cgreen%h %C(yellow)%ad %Creset%s  %Cblue<%an>' --date=short | emojify | less
+  ls  = ! git log --color --graph --pretty=format:'%C(green)%h %C(yellow)%ad%Creset %s %Cblue<%an>' --date=short | emojify | less --RAW-CONTROL-CHAR
