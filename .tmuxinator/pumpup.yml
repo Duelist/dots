@@ -33,5 +33,3 @@ windows:
       panes:
         -
         - npm run ssh megaman
-        - cd ../mobile
-        -

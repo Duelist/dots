@@ -82,6 +82,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+xmap <space> <leader>
 
 inoremap jk <Esc>
 nmap <leader>bq :bp <BAR> bd #<CR>
@@ -149,6 +150,11 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#fnamemod = ':t'
+
+
+" vim-commentary
+nmap <leader>/ gcc
+xmap <leader>/ gc
 
 
 " vim-easy-align
