@@ -55,7 +55,7 @@ call plug#end()
 " Colorscheme settings
 set background=dark
 let base16colorspace=256
-colorscheme base16-tomorrow
+colorscheme seoul256
 
 
 " Standard settings
@@ -76,19 +76,20 @@ let mapleader=','
 map <C-n> :NERDTreeToggle<CR>
 
 nmap <space> <leader>
+xmap <space> <leader>
 nmap <leader>l :bnext<CR>
 nmap <leader>h :bprevious<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-xmap <space> <leader>
 
-inoremap jk <Esc>
+inoremap <C-c> <C-[>
 nmap <leader>bq :bp <BAR> bd #<CR>
 nmap <leader>bl :ls<CR>
 
 nnoremap ; :
+xnoremap ; :
 
 
 " OS-specific

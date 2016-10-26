@@ -79,8 +79,8 @@ alias grep="grep --color=auto"
 # Base16 #
 ##########
 
-BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-tomorrow-night.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+# BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-tomorrow-night.sh"
+# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 
 ##############

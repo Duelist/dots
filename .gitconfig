@@ -1,2 +1,5 @@
 [alias]
   ls  = ! git log --color --graph --pretty=format:'%C(green)%h %C(yellow)%ad%Creset %s %Cblue<%an>' --date=short | emojify | less --RAW-CONTROL-CHAR
+[user]
+  name  = Ian Benedict
+  email = ianbenedict@gmail.com
