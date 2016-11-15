@@ -1,3 +1,38 @@
+###########
+# Aliases #
+###########
+
+alias vim="nvim"
+alias ls="ls -alG"
+alias grep="grep --color=auto"
+
+
+##########
+# Base16 #
+##########
+
+# BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-tomorrow-night.sh"
+# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+
+#############
+# emoji-cli #
+#############
+
+export EMOJI_CLI_KEYBIND=^E
+
+
+###########
+# Exports #
+###########
+
+export EDITOR=nvim
+export TERM=xterm-256color
+
+# FZF
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
+
+
 #########
 # ZPlug #
 #########
@@ -54,34 +89,6 @@ function parse_git_dirty() {
     echo "$GIT_PROMPT_CLEAN"
   fi
 }
-
-
-###########
-# Exports #
-###########
-
-export EDITOR=nvim
-export TERM=xterm-256color
-
-# FZF
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
-
-
-###########
-# Aliases #
-###########
-
-alias vim="nvim"
-alias ls="ls -alG"
-alias grep="grep --color=auto"
-
-
-##########
-# Base16 #
-##########
-
-# BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-tomorrow-night.sh"
-# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 
 ##############
