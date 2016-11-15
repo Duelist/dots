@@ -13,6 +13,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
+Plug 'junegunn/vim-slash'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'janko-m/vim-test'

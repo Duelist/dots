@@ -2,21 +2,26 @@
 # ZPlug #
 #########
 
-export ZPLUG_HOME=/usr/local/opt/zplug
-source $ZPLUG_HOME/init.zsh
-
 if [ ! -d $ZPLUG_HOME ]; then
-  echo "ZPlug required: https://www.github.com/b4b4r07/zplug"
-  return
+  curl -sL zplug.sh/installer | zsh
+fi
+
+if [[ -f ~/.zplug/init.zsh ]]; then
+  source ~/.zplug/init.zsh
 fi
 
 zplug "zplug/zplug"
 
+zplug "mrowa44/emojify", as:command
+zplug "junegunn/fzf", as:command, rename-to:fzf
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions", use:"src"
+zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-history-substring-search", as:plugin
-zplug "zsh-users/zsh-completions", as:plugin, use:"src"
+zplug "stedolan/jq", as:command, from:gh-r, rename-to:jq
+zplug "b4b4r07/emoji-cli", on:"stedolan/jq"
 
-zplug load
+zplug load --verbose
 
 
 ##########
@@ -55,13 +60,11 @@ function parse_git_dirty() {
 # Exports #
 ###########
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export EDITOR=nvim
 export TERM=xterm-256color
 
 # FZF
-export PATH="$PATH:~/.fzf/bin"
-export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 
 
 ###########
@@ -71,8 +74,6 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 alias vim="nvim"
 alias ls="ls -alG"
 alias grep="grep --color=auto"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
 ##########
@@ -90,8 +91,9 @@ alias grep="grep --color=auto"
 source ~/.bin/tmuxinator.zsh
 
 
-##########
-# Travis #
-##########
-
-[ -f /Users/Admin/.travis/travis.sh ] && source /Users/Admin/.travis/travis.sh
+#############
+# Automatic #
+#############
+#
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
