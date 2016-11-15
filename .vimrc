@@ -19,7 +19,7 @@ Plug 'tpope/vim-surround'
 Plug 'janko-m/vim-test'
 
 " Search
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
 " Git

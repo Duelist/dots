@@ -2,7 +2,7 @@
 # ZPlug #
 #########
 
-if [ ! -d $ZPLUG_HOME ]; then
+if [ ! -d ~/.zplug ]; then
   curl -sL zplug.sh/installer | zsh
 fi
 
@@ -13,7 +13,7 @@ fi
 zplug "zplug/zplug"
 
 zplug "mrowa44/emojify", as:command
-zplug "junegunn/fzf", as:command, rename-to:fzf
+zplug "junegunn/fzf", as:command, hook-build:"./install --key-bindings --completion --update-rc", rename-to:fzf, use:"bin"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions", use:"src"
 zplug "zsh-users/zsh-history-substring-search"
@@ -21,7 +21,7 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "stedolan/jq", as:command, from:gh-r, rename-to:jq
 zplug "b4b4r07/emoji-cli", on:"stedolan/jq"
 
-zplug load --verbose
+zplug load
 
 
 ##########
@@ -94,6 +94,6 @@ source ~/.bin/tmuxinator.zsh
 #############
 # Automatic #
 #############
-#
+
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
