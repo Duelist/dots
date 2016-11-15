@@ -13,7 +13,7 @@ fi
 zplug "zplug/zplug"
 
 zplug "mrowa44/emojify", as:command
-zplug "junegunn/fzf", as:command, hook-build:"./install --key-bindings --completion --update-rc", rename-to:fzf, use:"bin"
+zplug "junegunn/fzf", as:command, hook-build:"./install --key-bindings --completion --update-rc &> /dev/null", rename-to:fzf, use:"bin"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions", use:"src"
 zplug "zsh-users/zsh-history-substring-search"
