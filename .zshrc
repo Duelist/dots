@@ -27,6 +27,7 @@ export EMOJI_CLI_KEYBIND=^E
 # Exports #
 ###########
 
+export PATH=$PATH:/usr/local/bin
 export EDITOR=nvim
 export TERM=xterm-256color
 
