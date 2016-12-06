@@ -5,6 +5,7 @@
 alias vim="nvim"
 alias ls="ls -ahGl"
 alias grep="grep --color=auto"
+alias mkdir="mkdir -p"
 
 
 ##########
@@ -49,12 +50,12 @@ zplug "zplug/zplug"
 
 zplug "mrowa44/emojify", as:command
 zplug "junegunn/fzf", as:command, hook-build:"./install --key-bindings --completion --update-rc &> /dev/null", rename-to:fzf, use:"bin"
-zplug "zsh-users/zsh-autosuggestions"
+zplug "stedolan/jq", as:command, from:gh-r, rename-to:jq
+zplug "b4b4r07/emoji-cli", on:"stedolan/jq"
+zplug "Duelist/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions", use:"src"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting"
-zplug "stedolan/jq", as:command, from:gh-r, rename-to:jq
-zplug "b4b4r07/emoji-cli", on:"stedolan/jq"
 
 zplug load
 
