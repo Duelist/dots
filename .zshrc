@@ -32,7 +32,7 @@ export EDITOR=nvim
 export TERM=xterm-256color
 
 # FZF
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
 
 #########

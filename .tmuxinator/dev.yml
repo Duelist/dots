@@ -1,0 +1,10 @@
+name: dev
+root: .
+
+windows:
+  - dev:
+    layout: main-vertical
+    panes:
+      - vim
+  - zsh: clear
+  - dots: cd ~/dots && clear

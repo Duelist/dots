@@ -32,8 +32,9 @@ Plug 'klen/python-mode'
 Plug 'heavenshell/vim-jsdoc'
 
 " Syntax
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'w0rp/ale'
 Plug 'JuliaLang/julia-vim'
-Plug 'scrooloose/syntastic'
 Plug 'gavocanov/vim-js-indent'
 Plug 'mxw/vim-jsx'
 Plug 'othree/yajs.vim'
@@ -128,6 +129,10 @@ if executable('ag')
 endif
 
 
+" deoplete.nvim
+let g:deoplete#enable_at_startup = 1
+
+
 " fzf.vim
 nmap <c-P> :FZF<CR>
 
@@ -138,10 +143,6 @@ let g:used_javascript_libs = 'react,underscore'
 
 " python-mode
 let g:pymode_doc = 0
-
-
-" syntastic
-let g:syntastic_javascript_checkers = ['eslint']
 
 
 " vim-airline
