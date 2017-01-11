@@ -2,7 +2,7 @@ name: dev
 root: .
 
 windows:
-  - dev:
+  - vim:
     layout: main-vertical
     panes:
       - vim
