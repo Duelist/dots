@@ -129,6 +129,10 @@ if executable('ag')
 endif
 
 
+" Autocmd
+autocmd BufEnter * :syntax sync fromstart
+
+
 " ale
 let g:ale_linters = { 'javascript': ['eslint'] }
 
