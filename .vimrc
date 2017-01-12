@@ -129,6 +129,10 @@ if executable('ag')
 endif
 
 
+" ale
+let g:ale_linters = { 'javascript': ['eslint'] }
+
+
 " deoplete.nvim
 let g:deoplete#enable_at_startup = 1
 
