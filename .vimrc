@@ -172,7 +172,7 @@ xmap <leader>/ gc
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
-nmap <leader>= vi}ga=
+nmap <leader>= vipga=
 nmap <leader>: vi}ga*<Right>:
 
 
@@ -189,7 +189,9 @@ set completefunc=emoji#complete
 
 " vim-jsdoc
 let g:jsdoc_allow_input_prompt = 1
+let g:jsdoc_enable_es6 = 1
 let g:jsdoc_input_description = 1
+let g:jsdoc_underscore_private = 1
 let g:jsdoc_tags = { 'returns': 'return' }
 
 
