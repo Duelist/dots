@@ -16,6 +16,14 @@ alias mkdir="mkdir -p"
 # [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 
+###########
+# enhancd #
+###########
+
+export ENHANCD_DISABLE_DOT=1
+export ENHANCD_DOT_SHOW_FULLPATH=1
+
+
 #############
 # emoji-cli #
 #############
@@ -53,6 +61,7 @@ zplug "mrowa44/emojify", as:command
 zplug "junegunn/fzf", as:command, hook-build:"./install --key-bindings --completion --update-rc &> /dev/null", rename-to:fzf, use:"bin"
 zplug "stedolan/jq", as:command, from:gh-r, rename-to:jq
 zplug "b4b4r07/emoji-cli", on:"stedolan/jq"
+zplug "b4b4r07/enhancd", use:init.sh
 zplug "Duelist/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions", use:"src"
 zplug "zsh-users/zsh-history-substring-search"
