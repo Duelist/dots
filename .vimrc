@@ -43,6 +43,7 @@ Plug 'moll/vim-node'
 
 " Style
 Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
@@ -56,8 +57,7 @@ call plug#end()
 
 " Colorscheme settings
 set background=dark
-let base16colorspace=256
-colorscheme seoul256
+colorscheme gruvbox
 
 
 " Standard settings
@@ -156,7 +156,7 @@ let g:pymode_doc = 0
 " vim-airline
 set laststatus=2
 
-let g:airline_theme = 'zenburn'
+let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
