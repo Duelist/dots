@@ -79,8 +79,8 @@ map <C-n> :NERDTreeToggle<CR>
 
 nmap <space> <leader>
 xmap <space> <leader>
-nmap <leader>l :bnext<CR>
-nmap <leader>h :bprevious<CR>
+nmap <S-l> :bnext<CR>
+nmap <S-h> :bprevious<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
