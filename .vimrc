@@ -36,6 +36,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'w0rp/ale'
 Plug 'JuliaLang/julia-vim'
 Plug 'gavocanov/vim-js-indent'
+Plug 'sickill/vim-pasta'
 Plug 'mxw/vim-jsx'
 Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
