@@ -43,10 +43,9 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'moll/vim-node'
 
 " Style
+Plug 'itchyny/lightline.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/vim-emoji'
 
@@ -154,16 +153,6 @@ let g:used_javascript_libs = 'react,underscore'
 let g:pymode_doc = 0
 
 
-" vim-airline
-set laststatus=2
-
-let g:airline_theme = 'gruvbox'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#fnamemod = ':t'
-
-
 " vim-commentary
 nmap <leader>/ gcc
 xmap <leader>/ gc
@@ -198,6 +187,12 @@ let g:jsdoc_tags = { 'returns': 'return' }
 
 " vim-jsx
 let g:jsx_ext_required = 0
+
+
+" vim-lightline
+
+let g:lightline = {}
+let g:lightline.colorscheme = 'gruvbox'
 
 
 " vim-plug
