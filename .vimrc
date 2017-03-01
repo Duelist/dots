@@ -44,6 +44,7 @@ Plug 'moll/vim-node'
 
 " Style
 Plug 'itchyny/lightline.vim'
+Plug 'mgee/lightline-bufferline'
 Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
@@ -190,9 +191,12 @@ let g:jsx_ext_required = 0
 
 
 " vim-lightline
-
+set showtabline=2
 let g:lightline = {}
 let g:lightline.colorscheme = 'gruvbox'
+let g:lightline.tabline = { 'left': [['buffers']], 'right': [['close']] }
+let g:lightline.component_expand = { 'buffers': 'lightline#bufferline#buffers' }
+let g:lightline.component_type = { 'buffers': 'tabsel' }
 
 
 " vim-plug
