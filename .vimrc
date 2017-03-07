@@ -164,7 +164,9 @@ nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
 nmap <leader>= vipga=
+xmap <leader>= <S-v>ga=
 nmap <leader>: vi}ga*<Right>:
+xmap <leader>: <S-v>ga*<Right>:
 
 
 " vim-easymotion
