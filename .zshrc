@@ -7,6 +7,20 @@ alias ls="ls -ahGl"
 alias grep="grep --color=auto"
 alias mkdir="mkdir -p"
 
+alias ga='git add'
+alias gb='git branch'
+alias gbd='git branch -d '
+alias gcm='git commit -am'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gd='git diff'
+alias gp='git pull'
+alias gs='git status -s'
+alias gst='git stash'
+alias gstl='git stash list'
+alias gstp='git stash pop'
+alias gstd='git stash drop'
+
 
 ###########
 # enhancd #
