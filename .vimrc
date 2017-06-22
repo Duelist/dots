@@ -30,6 +30,7 @@ Plug 'junegunn/vim-github-dashboard'
 " Language-specific
 Plug 'klen/python-mode'
 Plug 'heavenshell/vim-jsdoc'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add tern' }
 
 " Syntax
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -41,6 +42,9 @@ Plug 'mxw/vim-jsx'
 Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'moll/vim-node'
+Plug 'wokalski/autocomplete-flow'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
 " Style
 Plug 'itchyny/lightline.vim'
@@ -131,6 +135,10 @@ endif
 
 
 " Autocmd
+
+" Remove trailing whitespace from buffer on write
+autocmd BufWritePre * %s/\s\+$//e
+" Sync syntax highlighting
 autocmd BufEnter * :syntax sync fromstart
 
 
@@ -148,6 +156,10 @@ nmap <c-P> :FZF<CR>
 
 " javascript-libraries-syntax.vim
 let g:used_javascript_libs = 'react,underscore'
+
+
+" neosnippet
+let g:neosnippet#enable_completed_snippet = 1
 
 
 " python-mode
