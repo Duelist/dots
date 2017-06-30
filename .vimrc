@@ -70,6 +70,7 @@ set backspace=eol,indent,start
 set colorcolumn=80
 set completeopt=menu
 set expandtab
+set hidden
 set ignorecase
 set noswapfile
 set nowrap
