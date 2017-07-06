@@ -3,16 +3,21 @@
 call plug#begin()
 
 " Color schemes
+Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
 Plug 'junegunn/seoul256.vim'
 Plug 'trusktr/seti.vim'
 
 " Utility
-Plug 'mattn/emmet-vim'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'w0rp/ale'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'ervandew/supertab'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
+Plug 'sickill/vim-pasta'
 Plug 'junegunn/vim-slash'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
@@ -23,39 +28,23 @@ Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
 " Git
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/vim-github-dashboard'
 
-" Language-specific
-Plug 'klen/python-mode'
+" Javascript
 Plug 'heavenshell/vim-jsdoc'
-Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add tern' }
-
-" Syntax
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'w0rp/ale'
-Plug 'JuliaLang/julia-vim'
-Plug 'gavocanov/vim-js-indent'
-Plug 'sickill/vim-pasta'
-Plug 'mxw/vim-jsx'
-Plug 'othree/yajs.vim'
-Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'moll/vim-node'
+Plug 'pangloss/vim-javascript'
+Plug 'gavocanov/vim-js-indent'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ternjs/tern_for_vim', { 'do': 'yarn install' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add tern' }
 Plug 'wokalski/autocomplete-flow'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
 
 " Style
 Plug 'itchyny/lightline.vim'
 Plug 'mgee/lightline-bufferline'
-Plug 'chriskempson/base16-vim'
-Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/vim-emoji'
-
-" Vimscript
-Plug 'junegunn/vader.vim'
 
 call plug#end()
 
@@ -68,7 +57,7 @@ colorscheme gruvbox
 " Standard settings
 set backspace=eol,indent,start
 set colorcolumn=80
-set completeopt=menu
+set completeopt=longest,menuone,preview
 set expandtab
 set hidden
 set ignorecase
@@ -150,13 +139,24 @@ let g:ale_linters = { 'javascript': ['eslint'] }
 " deoplete.nvim
 let g:deoplete#enable_at_startup = 1
 
+let g:deoplete#omni#functions = {}
+let g:deoplete#omni#functions.javascript = [
+  \ 'tern#Complete'
+\]
+
+let g:deoplete#sources = {}
+let g:deoplete#sources['javascript'] = ['ternjs']
+
+let g:SuperTabClosePreviewOnPopupClose = 1
+
+let g:tern_request_timeout = 1
+let g:tern_request_timeout = 6000
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
+
 
 " fzf.vim
 nmap <c-P> :FZF<CR>
-
-
-" javascript-libraries-syntax.vim
-let g:used_javascript_libs = 'react,underscore'
 
 
 " neosnippet
@@ -191,6 +191,11 @@ nmap s <Plug>(easymotion-overwin-f2)
 
 " vim-emoji
 set completefunc=emoji#complete
+
+
+" vim-javascript
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_flow = 1
 
 
 " vim-jsdoc
