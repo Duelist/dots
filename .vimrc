@@ -38,7 +38,8 @@ Plug 'gavocanov/vim-js-indent'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ternjs/tern_for_vim', { 'do': 'yarn install' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add tern' }
-Plug 'wokalski/autocomplete-flow'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
 " Style
 Plug 'itchyny/lightline.vim'
@@ -57,7 +58,8 @@ colorscheme gruvbox
 " Standard settings
 set backspace=eol,indent,start
 set colorcolumn=80
-set completeopt=longest,menuone,preview
+set completeopt+=noselect
+set completeopt-=preview
 set expandtab
 set hidden
 set ignorecase
@@ -138,6 +140,7 @@ let g:ale_linters = { 'javascript': ['eslint'] }
 
 " deoplete.nvim
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
 
 let g:deoplete#omni#functions = {}
 let g:deoplete#omni#functions.javascript = [
@@ -150,7 +153,6 @@ let g:deoplete#sources['javascript'] = ['ternjs']
 let g:SuperTabClosePreviewOnPopupClose = 1
 
 let g:tern_request_timeout = 1
-let g:tern_request_timeout = 6000
 let g:tern#command = ["tern"]
 let g:tern#arguments = ["--persistent"]
 
