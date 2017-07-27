@@ -35,6 +35,7 @@ Plug 'heavenshell/vim-jsdoc'
 Plug 'moll/vim-node'
 Plug 'pangloss/vim-javascript'
 Plug 'gavocanov/vim-js-indent'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ternjs/tern_for_vim', { 'do': 'yarn install' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add tern' }
