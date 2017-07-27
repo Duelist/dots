@@ -120,5 +120,6 @@ source ~/.bin/tmuxinator.zsh
 # Automatic #
 #############
 
+[ -f ~/.localrc ] && source ~/.localrc
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
