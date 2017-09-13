@@ -183,6 +183,8 @@ nmap <leader>= vipga=
 xmap <leader>= <S-v>ga=
 nmap <leader>: vi}ga*<Right>:
 xmap <leader>: <S-v>ga*<Right>:
+nmap <leader>f vip:EasyAlign * /from/<CR>
+xmap <leader>f <S-v>:EasyAlign * /from/<CR>
 
 
 " vim-easymotion
