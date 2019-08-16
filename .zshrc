@@ -68,7 +68,7 @@ if [ ! -d ~/.zplugin ]; then
    curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh | zsh
 fi
 
-source '/root/.zplugin/bin/zplugin.zsh'
+source ~/.zplugin/bin/zplugin.zsh
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 
