@@ -1,7 +1,7 @@
 " Installation
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
@@ -16,6 +16,7 @@ Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
 Plug 'junegunn/seoul256.vim'
 Plug 'trusktr/seti.vim'
+Plug 'connorholyday/vim-snazzy'
 
 " Utility
 Plug 'w0rp/ale'
@@ -60,9 +61,8 @@ call plug#end()
 
 
 " Colorscheme settings
-set background=dark
-colorscheme gruvbox
-
+" set background=dark
+" colorscheme snazzy
 
 " Standard settings
 set backspace=eol,indent,start
@@ -80,8 +80,6 @@ set shiftwidth=2
 set softtabstop=2
 
 let mapleader=','
-
-map <C-n> :NERDTreeToggle<CR>
 
 nmap <space> <leader>
 xmap <space> <leader>
@@ -226,7 +224,7 @@ let g:jsx_ext_required = 0
 " vim-lightline
 set showtabline=2
 let g:lightline = {}
-let g:lightline.colorscheme = 'gruvbox'
+let g:lightline.colorscheme = 'snazzy'
 let g:lightline.tabline = { 'left': [['buffers']], 'right': [['close']] }
 let g:lightline.component_expand = { 'buffers': 'lightline#bufferline#buffers' }
 let g:lightline.component_type = { 'buffers': 'tabsel' }

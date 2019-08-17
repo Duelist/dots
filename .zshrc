@@ -31,13 +31,6 @@ export ENHANCD_DISABLE_DOT=1
 export ENHANCD_DOT_SHOW_FULLPATH=1
 
 
-#############
-# emoji-cli #
-#############
-
-export EMOJI_CLI_KEYBIND=^E
-
-
 ###########
 # Exports #
 ###########
@@ -54,16 +47,6 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 # ZPlugin #
 ###########
 
-# if [ ! -d ~/.zplug ]; then
-#   curl -sL zplug.sh/installer | zsh
-# fi
-#
-# if [[ -f ~/.zplug/init.zsh ]]; then
-#   source ~/.zplug/init.zsh
-# fi
-#
-#
-
 if [ ! -d ~/.zplugin ]; then
    curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh | zsh
 fi
@@ -72,23 +55,16 @@ source ~/.zplugin/bin/zplugin.zsh
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 
-# zplug "zplug/zplug"
-
-# zplug "mrowa44/emojify", as:command
 zplugin ice as"program"
 zplugin light mrowa44/emojify
-# zplug "junegunn/fzf", as:command, hook-build:"./install --key-bindings --completion --update-rc &> /dev/null", rename-to:fzf, use:"bin"
+
 zplugin ice as"program" from"gh-r"
 zplugin load junegunn/fzf-bin
-# zplug "stedolan/jq", as:command, from:gh-r, rename-to:jq
-# zplug "b4b4r07/emoji-cli", on:"stedolan/jq"
-# zplug "b4b4r07/enhancd", use:init.sh
-zplugin light "Duelist/zsh-autosuggestions"
-# zplug "zsh-users/zsh-completions", use:"src"
-zplugin light "zsh-users/zsh-history-substring-search"
-zplugin light "zsh-users/zsh-syntax-highlighting"
-#
-# zplug load
+
+zplugin light zsh-users/zsh-autosuggestions
+zplugin light zsh-users/zsh-completions
+zplugin light zsh-users/zsh-history-substring-search
+zplugin light zsh-users/zsh-syntax-highlighting
 
 
 ##########
@@ -121,13 +97,6 @@ function parse_git_dirty() {
     echo "$GIT_PROMPT_CLEAN"
   fi
 }
-
-
-##############
-# Tmuxinator #
-##############
-
-source ~/.bin/tmuxinator.zsh
 
 
 #############
