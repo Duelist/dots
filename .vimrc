@@ -45,11 +45,13 @@ Plug 'moll/vim-node'
 Plug 'pangloss/vim-javascript'
 Plug 'gavocanov/vim-js-indent'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'ternjs/tern_for_vim', { 'do': 'yarn install' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add tern' }
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'leafgarland/typescript-vim'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
+" Python
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 
 " Style
 Plug 'itchyny/lightline.vim'
@@ -76,8 +78,12 @@ set noswapfile
 set nowrap
 set number
 set relativenumber
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
+set autoindent
+set exrc
+
+filetype plugin indent on
 
 let mapleader=','
 
@@ -143,25 +149,6 @@ autocmd BufEnter * :syntax sync fromstart
 
 " ale
 let g:ale_linters = { 'javascript': ['eslint'] }
-
-
-" deoplete.nvim
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-
-let g:deoplete#omni#functions = {}
-let g:deoplete#omni#functions.javascript = [
-  \ 'tern#Complete'
-\]
-
-let g:deoplete#sources = {}
-let g:deoplete#sources['javascript'] = ['ternjs']
-
-let g:SuperTabClosePreviewOnPopupClose = 1
-
-let g:tern_request_timeout = 1
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
 
 
 " fzf.vim

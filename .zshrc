@@ -10,6 +10,7 @@ alias mkdir="mkdir -p"
 alias ga='git add'
 alias gb='git branch'
 alias gbd='git branch -d '
+alias gbr='git branch | grep -v "master" | xargs git branch -D'
 alias gcm='git commit -am'
 alias gco='git checkout'
 alias gcob='git checkout -b'
@@ -21,6 +22,9 @@ alias gst='git stash'
 alias gstl='git stash list'
 alias gstp='git stash pop'
 alias gstd='git stash drop'
+
+alias chrome='google-chrome-stable &'
+alias work='cd ~/projects/fuji && source venv/bin/activate'
 
 
 ###########
@@ -115,3 +119,5 @@ function parse_git_dirty() {
 [ -f ~/.localrc ] && source ~/.localrc
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
