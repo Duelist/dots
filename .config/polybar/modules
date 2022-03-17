@@ -1,0 +1,123 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;==========================================================
+
+######
+# i3 #
+######
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+; pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+; label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+
+#######
+# cpu #
+#######
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix =
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-font = 2
+label =  %percentage%%
+
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix =
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-font = 2
+label =  %percentage_used%%
+
+
+########
+# alsa #
+########
+
+[module/alsa]
+type = internal/alsa
+
+format-volume = <ramp-volume><label-volume>
+label-volume = %percentage%%
+label-volume-foreground = ${root.foreground}
+label-volume-background = ${root.background}
+ramp-volume-0 = " "
+ramp-volume-0-foreground = ${root.foreground}
+ramp-volume-0-background = ${root.background}
+ramp-volume-1 = " "
+ramp-volume-1-foreground = ${root.foreground}
+ramp-volume-1-background = ${root.background}
+ramp-volume-2 = " "
+ramp-volume-2-foreground = ${root.foreground}
+ramp-volume-2-background = ${root.background}
+ramp-volume-3 = " "
+ramp-volume-3-foreground = ${root.foreground}
+ramp-volume-3-background = ${root.background}
+
+format-muted-prefix =
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = 
+
+
+########
+# date #
+########
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = "%b %e, %Y"
+time = %I:%M %p
+
+format-prefix =
+format-prefix-foreground = ${colors.foreground-alt}
+
+label = %date%  %time%
+
+; vim:ft=dosini
