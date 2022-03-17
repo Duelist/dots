@@ -27,6 +27,15 @@ alias chrome='google-chrome-stable &'
 alias work='cd ~/projects/fuji && source venv/bin/activate'
 
 
+############
+# Keybinds #
+############
+
+bindkey "^[[H"  beginning-of-line
+bindkey "^[[F"  end-of-line
+bindkey "^[[3~" delete-char
+
+
 ###########
 # enhancd #
 ###########
@@ -46,29 +55,60 @@ export TERM=xterm-256color
 # FZF
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
+#############
+# TailScale #
+#############
 
-###########
-# ZPlugin #
-###########
+function ts() {
+    if [[ $# -eq 1 && $1 = 'up' ]]; then
+        echo 'sudo tailscale up --accept-dns --accept-routes'
+        return 0
+    fi
 
-if [ ! -d ~/.zplugin ]; then
-   curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh | zsh
+    echo "sudo tailscale $@"
+}
+autoload -Uz ts
+
+
+#########
+# ZInit #
+#########
+
+if [ ! -d ~/.zinit ]; then
+   curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh | zsh
 fi
 
-source ~/.zplugin/bin/zplugin.zsh
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
+source ~/.zinit/bin/zinit.zsh
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-zplugin ice as"program"
-zplugin light mrowa44/emojify
+zinit ice as"program"
+zinit light mrowa44/emojify
 
-zplugin ice as"program" from"gh-r"
-zplugin load junegunn/fzf-bin
+zinit ice as"program" from"gh-r"
+zinit load junegunn/fzf-bin
 
-zplugin light zsh-users/zsh-autosuggestions
-zplugin light zsh-users/zsh-completions
-zplugin light zsh-users/zsh-history-substring-search
-zplugin light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-history-substring-search
+zinit light zsh-users/zsh-syntax-highlighting
+
+
+########
+# NVIM #
+########
+
+function nvimvenv {
+  if [[ -e "$VIRTUAL_ENV" && -f "$VIRTUAL_ENV/bin/activate" ]]; then
+    source "$VIRTUAL_ENV/bin/activate"
+    command nvim $@
+    deactivate
+  else
+    command nvim $@
+  fi
+}
+
+alias nvim=nvimvenv
 
 
 #######
@@ -120,4 +160,4 @@ function parse_git_dirty() {
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/go/bin:$PATH"

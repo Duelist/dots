@@ -1,5 +1,4 @@
 " Installation
-
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -7,7 +6,6 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 " Plugins
-
 call plug#begin()
 
 " Color schemes
@@ -17,58 +15,62 @@ Plug 'tomasr/molokai'
 Plug 'junegunn/seoul256.vim'
 Plug 'trusktr/seti.vim'
 Plug 'connorholyday/vim-snazzy'
+Plug 'Shatur/neovim-ayu'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " Utility
-Plug 'w0rp/ale'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'ervandew/supertab'
+Plug 'jiangmiao/auto-pairs'
+Plug 'phaazon/hop.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'folke/trouble.nvim'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'p00f/nvim-ts-rainbow'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
-Plug 'easymotion/vim-easymotion'
-Plug 'sickill/vim-pasta'
-Plug 'junegunn/vim-slash'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
-Plug 'janko-m/vim-test'
+Plug 'vim-test/vim-test'
+
+" CMP
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/cmp-nvim-lsp'
 
 " Search
-Plug 'junegunn/fzf', { 'do': './install --bin' }
-Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Git
 Plug 'tpope/vim-fugitive'
 
-" Javascript
-Plug 'heavenshell/vim-jsdoc'
-Plug 'moll/vim-node'
-Plug 'pangloss/vim-javascript'
-Plug 'gavocanov/vim-js-indent'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'leafgarland/typescript-vim'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-
-" Python
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
-
 " Style
-Plug 'itchyny/lightline.vim'
-Plug 'mgee/lightline-bufferline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/vim-emoji'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'akinsho/bufferline.nvim'
 
 call plug#end()
 
 
-" Colorscheme settings
-" set background=dark
-" colorscheme snazzy
+" Requires
+lua require('user.colorscheme')
+lua require('user.keybinds')
+lua require('user.lsp')
+lua require('user.plugins')
+lua require('user.style')
+lua require('user.treesitter')
+
 
 " Standard settings
 set backspace=eol,indent,start
-set colorcolumn=80
+set clipboard=unnamed
+set colorcolumn=
 set completeopt+=noselect
 set completeopt-=preview
 set expandtab
@@ -82,6 +84,8 @@ set shiftwidth=4
 set softtabstop=4
 set autoindent
 set exrc
+set termguicolors
+set updatetime=100
 
 filetype plugin indent on
 
@@ -104,13 +108,14 @@ nnoremap ; :
 xnoremap ; :
 
 
-" OS-specific
-if has('mac')
-  set clipboard=unnamed
-endif
+" Enable Italics
+hi Comment gui=italic cterm=italic
+hi htmlArg gui=italic cterm=italic
 
+
+" OS-specific
 if has('gui_running')
-  set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\ Nerd\ Font\ Complete:h14
+  set guifont=OperatorMono:h14
   set guioptions=
 endif
 
@@ -151,8 +156,12 @@ autocmd BufEnter * :syntax sync fromstart
 let g:ale_linters = { 'javascript': ['eslint'] }
 
 
-" fzf.vim
-nmap <c-P> :FZF<CR>
+" colorizer
+lua require'colorizer'.setup()
+
+
+" hop
+nmap s <cmd>HopChar2<cr>
 
 
 " neosnippet
@@ -161,6 +170,11 @@ let g:neosnippet#enable_completed_snippet = 1
 
 " python-mode
 let g:pymode_doc = 0
+
+
+" telescope
+nmap <c-P> <cmd>Telescope find_files<cr>
+nmap <c-[> <cmd>Telescope live_grep<cr>
 
 
 " vim-commentary
@@ -178,13 +192,6 @@ nmap <leader>: vi}ga*<Right>:
 xmap <leader>: <S-v>ga*<Right>:
 nmap <leader>f vip:EasyAlign * /from/<CR>
 xmap <leader>f <S-v>:EasyAlign * /from/<CR>
-
-
-" vim-easymotion
-let g:EasyMotion_do_mapping = 0
-let g:EasyMotion_smartcase = 1
-
-nmap s <Plug>(easymotion-overwin-f2)
 
 
 " vim-emoji
@@ -208,19 +215,23 @@ let g:jsdoc_tags = { 'returns': 'return' }
 let g:jsx_ext_required = 0
 
 
-" vim-lightline
-set showtabline=2
-let g:lightline = {}
-let g:lightline.colorscheme = 'snazzy'
-let g:lightline.tabline = { 'left': [['buffers']], 'right': [['close']] }
-let g:lightline.component_expand = { 'buffers': 'lightline#bufferline#buffers' }
-let g:lightline.component_type = { 'buffers': 'tabsel' }
-
-
 " vim-plug
 nnoremap <leader>u :PlugUpdate<CR>
 
 
+" vim-startify
+let g:startify_custom_header = [
+    \ '    ____             ___      __ ',
+    \ '   / __ \__  _____  / (_)____/ /_',
+    \ '  / / / / / / / _ \/ / / ___/ __/',
+    \ ' / /_/ / /_/ /  __/ / (__  ) /_  ',
+    \ '/_____/\__,_/\___/_/_/____/\__/  ',
+    \ ]
+
+
 " vim-test
+let test#python#runner = 'pytest'
+let test#python#pytest#executable = 'bin/manage test'
+let test#python#pytest#file_pattern = '.*'
 nnoremap <leader>t :TestNearest<CR>
 nnoremap <leader>T :TestFile<<CR>
