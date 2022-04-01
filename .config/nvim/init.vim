@@ -21,6 +21,7 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 " Utility
 Plug 'jiangmiao/auto-pairs'
 Plug 'phaazon/hop.nvim'
+Plug 'mfussenegger/nvim-lint'
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
