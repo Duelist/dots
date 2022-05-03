@@ -173,16 +173,6 @@ let g:neosnippet#enable_completed_snippet = 1
 let g:pymode_doc = 0
 
 
-" telescope
-nmap <c-P> <cmd>Telescope find_files<cr>
-nmap <c-[> <cmd>Telescope live_grep<cr>
-
-
-" vim-commentary
-nmap <leader>/ gcc
-xmap <leader>/ gc
-
-
 " vim-easy-align
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
@@ -214,10 +204,6 @@ let g:jsdoc_tags = { 'returns': 'return' }
 
 " vim-jsx
 let g:jsx_ext_required = 0
-
-
-" vim-plug
-nnoremap <leader>u :PlugUpdate<CR>
 
 
 " vim-startify
