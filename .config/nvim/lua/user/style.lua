@@ -1,3 +1,4 @@
+require'bufferline'.setup{}
 require'lualine'.setup {
   options = {
     icons_enabled = true,
@@ -26,5 +27,3 @@ require'lualine'.setup {
   tabline = {},
   extensions = {}
 }
-
-require'bufferline'.setup{}
