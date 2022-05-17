@@ -1,6 +1,9 @@
-require'nvim-lsp-installer'.setup {}
-require'lspconfig'.tsserver.setup {}
+require'nvim-lsp-installer'.setup {
+    automatic_installation = true
+}
+
 require'lspconfig'.eslint.setup {}
+require'lspconfig'.tsserver.setup {}
 require'lspconfig'.pyright.setup {}
 
 local cmp = require'cmp'
