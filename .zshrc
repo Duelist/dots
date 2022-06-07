@@ -6,6 +6,7 @@ alias vim="nvim"
 alias ls="exa -abghHliS"
 alias grep="grep --color=auto"
 alias mkdir="mkdir -p"
+alias dots="cd ~/dots/"
 
 alias ga='git add'
 alias gb='git branch'

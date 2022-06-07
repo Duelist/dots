@@ -20,15 +20,23 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " Utility
 Plug 'jiangmiao/auto-pairs'
+Plug 'numToStr/Comment.nvim'
+Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'phaazon/hop.nvim'
+Plug 'rcarriga/neotest'
+Plug 'rcarriga/neotest-python'
+Plug 'rcarriga/neotest-vim-test'
+Plug 'andythigpen/nvim-coverage'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
 Plug 'mfussenegger/nvim-lint'
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'folke/trouble.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'p00f/nvim-ts-rainbow'
-Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
@@ -51,6 +59,7 @@ Plug 'tpope/vim-fugitive'
 
 " Style
 Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'junegunn/vim-emoji'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -123,7 +132,6 @@ endif
 
 " NeoVim-specific
 if has('nvim')
-
   tnoremap <C-h> <C-\><C-n><C-w>h
   tnoremap <C-j> <C-\><C-n><C-w>j
   tnoremap <C-k> <C-\><C-n><C-w>k
@@ -131,7 +139,6 @@ if has('nvim')
 
   autocmd BufWinEnter,WinEnter term://* startinsert
   autocmd BufLeave term://* stopinsert
-
 else
   set encoding=utf-8
 endif
@@ -145,24 +152,14 @@ if executable('ag')
 endif
 
 
-" Autocmd
-
 " Remove trailing whitespace from buffer on write
 autocmd BufWritePre * %s/\s\+$//e
 " Sync syntax highlighting
 autocmd BufEnter * :syntax sync fromstart
 
 
-" ale
-let g:ale_linters = { 'javascript': ['eslint'] }
-
-
 " colorizer
 lua require'colorizer'.setup()
-
-
-" hop
-nmap s <cmd>HopChar2<cr>
 
 
 " neosnippet
@@ -214,11 +211,12 @@ let g:startify_custom_header = [
     \ ' / /_/ / /_/ /  __/ / (__  ) /_  ',
     \ '/_____/\__,_/\___/_/_/____/\__/  ',
     \ ]
+let g:startify_change_to_dir = 0
+let g:startify_change_to_vcs_root = 1
 
 
 " vim-test
-let test#python#runner = 'pytest'
-let test#python#pytest#executable = 'bin/manage test'
-let test#python#pytest#file_pattern = '.*'
+let test#strategy = 'basic'
+let g:test#basic#start_normal = 1
 nnoremap <leader>t :TestNearest<CR>
 nnoremap <leader>T :TestFile<<CR>
