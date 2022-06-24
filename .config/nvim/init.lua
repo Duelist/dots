@@ -105,12 +105,14 @@ vim.cmd [[
     set updatetime=100
 ]]
 
+
 -- Auto commands
 vim.api.nvim_command [[
     autocmd BufWritePre * %s/\s\+$//e
     autocmd BufWinEnter,WinEnter term://* startinsert
     autocmd BufLeave term://* stopinsert
 ]]
+
 
 -- Highlights
 vim.api.nvim_create_autocmd('ColorScheme', { pattern = '*', command = 'highlight Comment gui=italic cterm=italic' })
