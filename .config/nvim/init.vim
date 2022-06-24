@@ -48,11 +48,17 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'onsails/lspkind.nvim'
 
 " Search
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'benfowler/telescope-luasnip.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', {'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'}
+
+" Snippets
+Plug 'L3MON4D3/LuaSnip'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -72,8 +78,10 @@ call plug#end()
 lua require('user.colorscheme')
 lua require('user.keybinds')
 lua require('user.lsp')
+lua require('user.luasnip')
 lua require('user.plugins')
 lua require('user.style')
+lua require('user.telescope')
 lua require('user.treesitter')
 
 
