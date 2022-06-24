@@ -1,3 +1,4 @@
+require'colorizer'.setup{}
 require'Comment'.setup {}
 require'coverage'.setup {}
 require'hop'.setup {}
@@ -23,3 +24,13 @@ require'neotest'.setup {
         },
     }
 }
+
+vim.g.startify_custom_header = {
+    [[    ____             ___      __ ]],
+    [[   / __ \__  _____  / (_)____/ /_]],
+    [[  / / / / / / / _ \/ / / ___/ __/]],
+    [[ / /_/ / /_/ /  __/ / (__  ) /_  ]],
+    [[/_____/\__,_/\___/_/_/____/\__/  ]],
+}
+vim.g.startify_change_to_dir = 0
+vim.g.startify_change_to_vcs_root = 1
