@@ -79,7 +79,6 @@ require 'user.lsp'
 require 'user.luasnip'
 require 'user.plugins'
 require 'user.style'
-require 'user.telescope'
 require 'user.treesitter'
 
 

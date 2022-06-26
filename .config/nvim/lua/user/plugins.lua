@@ -7,6 +7,7 @@ require'lint'.linters_by_ft = {
     python = {'mypy',}
 }
 
+-- LuaSnip
 local luasnip = require'luasnip'
 luasnip.config.set_config {
     history = true,
@@ -14,6 +15,8 @@ luasnip.config.set_config {
     enable_autosnippets = true,
 }
 
+
+-- Neo Test
 require'neotest'.setup {
     adapters = {
         require'neotest-python' {
@@ -25,6 +28,28 @@ require'neotest'.setup {
     }
 }
 
+
+-- Telescope
+local telescope = require'telescope'
+
+telescope.setup {
+    pickers = {
+        find_files = {
+            hidden = true,
+        },
+        live_grep = {
+            additional_args = function(opts)
+                return {'--hidden'}
+            end
+        },
+    },
+}
+
+telescope.load_extension('fzf')
+telescope.load_extension('luasnip')
+
+
+-- vim-startify
 vim.g.startify_custom_header = {
     [[    ____             ___      __ ]],
     [[   / __ \__  _____  / (_)____/ /_]],
