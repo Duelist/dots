@@ -4,11 +4,7 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin')
 
 -- Color schemes
-Plug 'chriskempson/base16-vim'
-Plug 'morhetz/gruvbox'
-Plug 'tomasr/molokai'
 Plug 'junegunn/seoul256.vim'
-Plug 'trusktr/seti.vim'
 Plug 'connorholyday/vim-snazzy'
 Plug 'Shatur/neovim-ayu'
 Plug('folke/tokyonight.nvim', { branch = 'main' })
