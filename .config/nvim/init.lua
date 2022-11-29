@@ -7,7 +7,8 @@ vim.call('plug#begin')
 Plug 'junegunn/seoul256.vim'
 Plug 'connorholyday/vim-snazzy'
 Plug 'Shatur/neovim-ayu'
-Plug('folke/tokyonight.nvim', { branch = 'main' })
+Plug ('folke/tokyonight.nvim', { branch = 'main' })
+Plug ('catppuccin/nvim', { as = 'catppuccin' })
 
 -- Utility
 Plug 'jiangmiao/auto-pairs'
@@ -25,6 +26,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = vim.fn[':TSUpdate'] })
 Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'nvim-treesitter/nvim-tree-docs'
 Plug 'folke/trouble.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'p00f/nvim-ts-rainbow'
@@ -53,6 +55,7 @@ Plug 'L3MON4D3/LuaSnip'
 
 -- Git
 Plug 'tpope/vim-fugitive'
+Plug 'tanvirtin/vgit.nvim'
 
 -- Style
 Plug 'ryanoasis/vim-devicons'

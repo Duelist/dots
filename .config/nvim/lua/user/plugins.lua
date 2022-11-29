@@ -49,6 +49,13 @@ telescope.load_extension('fzf')
 telescope.load_extension('luasnip')
 
 
+-- vgit
+require('vgit').setup()
+vim.o.updatetime = 300
+-- vim.o.incsearch = false
+vim.wo.signcolumn = 'yes'
+
+
 -- vim-startify
 vim.g.startify_custom_header = {
     [[    ____             ___      __ ]],

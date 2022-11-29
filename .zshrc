@@ -165,5 +165,6 @@ function parse_git_dirty() {
 [ -f ~/.localrc ] && source ~/.localrc
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(fnm env --use-on-cd)"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/go/bin:$PATH"
