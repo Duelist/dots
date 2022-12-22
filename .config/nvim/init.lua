@@ -14,19 +14,13 @@ Plug ('catppuccin/nvim', { as = 'catppuccin' })
 Plug 'jiangmiao/auto-pairs'
 Plug 'numToStr/Comment.nvim'
 Plug 'antoinemadec/FixCursorHold.nvim'
+Plug 'github/copilot.vim'
 Plug 'phaazon/hop.nvim'
 Plug 'rcarriga/neotest'
 Plug 'rcarriga/neotest-python'
 Plug 'rcarriga/neotest-vim-test'
 Plug 'andythigpen/nvim-coverage'
-Plug 'mfussenegger/nvim-dap'
-Plug 'rcarriga/nvim-dap-ui'
 Plug 'mfussenegger/nvim-lint'
-Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/nvim-lsp-installer'
-Plug('nvim-treesitter/nvim-treesitter', { ['do'] = vim.fn[':TSUpdate'] })
-Plug 'nvim-treesitter/nvim-treesitter-context'
-Plug 'nvim-treesitter/nvim-tree-docs'
 Plug 'folke/trouble.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'p00f/nvim-ts-rainbow'
@@ -34,6 +28,20 @@ Plug 'junegunn/vim-easy-align'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'vim-test/vim-test'
+
+-- Debugging
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'HiPhish/debugpy.nvim'
+
+-- LSP
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug('nvim-treesitter/nvim-treesitter', { ['do'] = vim.fn[':TSUpdate'] })
+Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'nvim-treesitter/nvim-tree-docs'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 
 -- CMP
 Plug 'hrsh7th/nvim-cmp'
@@ -47,6 +55,7 @@ Plug 'onsails/lspkind.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'benfowler/telescope-luasnip.nvim'
 Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' })
 
@@ -55,7 +64,7 @@ Plug 'L3MON4D3/LuaSnip'
 
 -- Git
 Plug 'tpope/vim-fugitive'
-Plug 'tanvirtin/vgit.nvim'
+Plug 'lewis6991/gitsigns.nvim'
 
 -- Style
 Plug 'ryanoasis/vim-devicons'
@@ -73,6 +82,7 @@ vim.g.mapleader = ' '
 
 -- Requires
 require 'user.colorscheme'
+require 'user.dap'
 require 'user.keybinds'
 require 'user.lsp'
 require 'user.luasnip'

@@ -1,11 +1,20 @@
 require'colorizer'.setup{}
 require'Comment'.setup {}
 require'coverage'.setup {}
+require'gitsigns'.setup {
+    current_line_blame = true,
+    current_line_blame_opts = {
+        delay = 500,
+    },
+}
 require'hop'.setup {}
 require'trouble'.setup {}
 require'lint'.linters_by_ft = {
     python = {'mypy',}
 }
+
+-- Copilot
+vim.g.copilot_no_tab_map = true
 
 -- LuaSnip
 local luasnip = require'luasnip'
@@ -47,13 +56,6 @@ telescope.setup {
 
 telescope.load_extension('fzf')
 telescope.load_extension('luasnip')
-
-
--- vgit
-require('vgit').setup()
-vim.o.updatetime = 300
--- vim.o.incsearch = false
-vim.wo.signcolumn = 'yes'
 
 
 -- vim-startify

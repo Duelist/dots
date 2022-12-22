@@ -1,16 +1,7 @@
-require'nvim-lsp-installer'.setup {
-    automatic_installation = true
-}
-
-require'lspconfig'.eslint.setup {}
-require'lspconfig'.tsserver.setup {}
-require'lspconfig'.pyright.setup {}
-
 local cmp = require'cmp'
-local lspkind = require'lspkind'
 cmp.setup {
     formatting = {
-        format = lspkind.cmp_format({ mode = 'symbol_text' })
+        format = require'lspkind'.cmp_format({ mode = 'symbol_text' })
         -- format = function(entry, vim_item)
         --     vim_item.menu = ({
         --         nvim_lsp = "[LSP]",
@@ -28,10 +19,10 @@ cmp.setup {
         ['<c-space>'] = cmp.mapping.complete(),
         ['<tab>'] = cmp.mapping(function (fallback)
             local luasnip = require'luasnip'
-            if luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
-            elseif cmp.visible() then
+            if cmp.visible() then
                 cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
             else
                 fallback()
             end
@@ -53,3 +44,19 @@ cmp.setup {
         { name = 'path' },
     },
 }
+
+require'mason'.setup {}
+require'mason-lspconfig'.setup {}
+
+require'null-ls'.setup {
+    sources = {
+        require'null-ls'.builtins.formatting.prettier,
+        require'null-ls'.builtins.diagnostics.mypy.with({
+            extra_args = { '--ignore-missing-imports' },
+        }),
+    }
+}
+
+require'lspconfig'.eslint.setup {}
+require'lspconfig'.tsserver.setup {}
+-- require'lspconfig'.pyright.setup {}
