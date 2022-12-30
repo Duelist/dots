@@ -1,87 +1,177 @@
-local Plug = vim.fn['plug#']
+local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+local is_bootstrap = false
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+    is_bootstrap = true
+    vim.fn.system { 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path }
+    vim.cmd [[packadd packer.nvim]]
+end
 
--- Plugins
-vim.call('plug#begin')
+require('packer').startup(function(use)
+    -- Package manager
+    use 'wbthomason/packer.nvim'
 
--- Color schemes
-Plug 'junegunn/seoul256.vim'
-Plug 'connorholyday/vim-snazzy'
-Plug 'Shatur/neovim-ayu'
-Plug ('folke/tokyonight.nvim', { branch = 'main' })
-Plug ('catppuccin/nvim', { as = 'catppuccin' })
+    -- Colour schemes
+    use { 'folke/tokyonight.nvim', branch = 'main' }
+    use { 'catppuccin/nvim', as = 'catppuccin' }
 
--- Utility
-Plug 'jiangmiao/auto-pairs'
-Plug 'numToStr/Comment.nvim'
-Plug 'antoinemadec/FixCursorHold.nvim'
-Plug 'github/copilot.vim'
-Plug 'phaazon/hop.nvim'
-Plug 'rcarriga/neotest'
-Plug 'rcarriga/neotest-python'
-Plug 'rcarriga/neotest-vim-test'
-Plug 'andythigpen/nvim-coverage'
-Plug 'mfussenegger/nvim-lint'
-Plug 'folke/trouble.nvim'
-Plug 'norcalli/nvim-colorizer.lua'
-Plug 'p00f/nvim-ts-rainbow'
-Plug 'junegunn/vim-easy-align'
-Plug 'mhinz/vim-startify'
-Plug 'tpope/vim-surround'
-Plug 'vim-test/vim-test'
+    -- Utility
+    use 'numToStr/Comment.nvim'
+    use 'antoinemadec/FixCursorHold.nvim'
+    use 'github/copilot.vim'
+    use 'phaazon/hop.nvim'
+    use 'rcarriga/neotest'
+    use 'rcarriga/neotest-jest'
+    use 'rcarriga/neotest-python'
+    use 'rouge8/neotest-rust'
+    use 'rcarriga/neotest-vim-test'
+    use 'windwp/nvim-autopairs'
+    use 'andythigpen/nvim-coverage'
+    use 'mfussenegger/nvim-lint'
+    use 'folke/trouble.nvim'
+    use 'norcalli/nvim-colorizer.lua'
+    use 'junegunn/vim-easy-align'
+    use 'tpope/vim-sleuth'
+    use 'mhinz/vim-startify'
+    use 'tpope/vim-surround'
+    use 'vim-test/vim-test'
 
--- Debugging
-Plug 'mfussenegger/nvim-dap'
-Plug 'rcarriga/nvim-dap-ui'
-Plug 'HiPhish/debugpy.nvim'
+    -- Debugging
+    use {
+        'mfussenegger/nvim-dap',
+        requires = { 'rcarriga/nvim-dap-ui', 'HiPhish/debugpy.nvim' },
+    }
 
--- LSP
-Plug 'jose-elias-alvarez/null-ls.nvim'
-Plug 'neovim/nvim-lspconfig'
-Plug('nvim-treesitter/nvim-treesitter', { ['do'] = vim.fn[':TSUpdate'] })
-Plug 'nvim-treesitter/nvim-treesitter-context'
-Plug 'nvim-treesitter/nvim-tree-docs'
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
+    -- LSP
+    use {
+        'neovim/nvim-lspconfig',
+        requires = {
+            -- Mason
+            'williamboman/mason.nvim',
+            'williamboman/mason-lspconfig.nvim',
+        }
+    }
 
--- CMP
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'onsails/lspkind.nvim'
+    -- Code highlighting & navigation
+    use 'jose-elias-alvarez/null-ls.nvim'
+    use {
+	'nvim-treesitter/nvim-treesitter',
+        run = function()
+            require("nvim-treesitter.install").update { with_sync = true }
+        end,
+    }
+    use {
+        'nvim-treesitter/nvim-treesitter-context',
+        after = 'nvim-treesitter',
+    }
+    use {
+        'nvim-treesitter/nvim-tree-docs',
+        after = 'nvim-treesitter',
+    }
+    use {
+        'windwp/nvim-ts-autotag',
+        after = 'nvim-treesitter',
+    }
+    use {
+        'p00f/nvim-ts-rainbow',
+        after = 'nvim-treesitter',
+    }
 
--- Search
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-dap.nvim'
-Plug 'benfowler/telescope-luasnip.nvim'
-Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' })
+    -- Autocompletion
+    use {
+        'hrsh7th/nvim-cmp',
+        requires = {
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-cmdline',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-nvim-lsp',
+            'onsails/lspkind.nvim',
+            'L3MON4D3/LuaSnip',
+        }
+    }
 
--- Snippets
-Plug 'L3MON4D3/LuaSnip'
+    -- Git
+    use 'tpope/vim-fugitive'
+    use 'tpope/vim-rhubarb'
+    use 'lewis6991/gitsigns.nvim'
 
--- Git
-Plug 'tpope/vim-fugitive'
-Plug 'lewis6991/gitsigns.nvim'
+    -- Style
+    use 'nvim-lualine/lualine.nvim'
+    use {
+        'akinsho/bufferline.nvim',
+        requires = 'nvim-tree/nvim-web-devicons',
+    }
 
--- Style
-Plug 'ryanoasis/vim-devicons'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'akinsho/bufferline.nvim'
+    -- Search
+    use 'nvim-lua/popup.nvim'
+    use {
+	'nvim-telescope/telescope.nvim',
+	requires = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-dap.nvim', 'benfowler/telescope-luasnip.nvim' },
+    }
+    use {
+	'nvim-telescope/telescope-fzf-native.nvim',
+	run = 'make',
+    }
 
-vim.call('plug#end')
+    if is_bootstrap then
+        require('packer').sync()
+    end
+end)
 
 
--- Leader
+-- When we are bootstrapping a configuration, it doesn't
+-- make sense to execute the rest of the init.lua.
+--
+-- You'll need to restart nvim, and then it will work.
+if is_bootstrap then
+  print '=================================='
+  print '    Plugins are being installed'
+  print '    Wait until Packer completes,'
+  print '       then restart nvim'
+  print '=================================='
+  return
+end
+
+-- Set leader key
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+-- Set line numbers & relative numbering
+vim.wo.number = true
+vim.wo.relativenumber = true
+
+-- Disallow line-wrapping
+vim.wo.wrap = false
+
+-- Completion options
+vim.o.completeopt = 'menuone,noselect'
+
+-- Use project-specfic rc files
+vim.o.exrc = true
+
+-- (Mostly) Case insensitive searching
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+-- Disable swap file usage
+vim.o.swapfile = false
+
+-- Enable break indent
+vim.o.breakindent = true
+
+-- Save undo history
+vim.o.undofile = true
+
+-- Set colorscheme
+vim.o.termguicolors = true
+vim.g.catppuccin_flavour = 'mocha'
+vim.cmd[[colorscheme catppuccin]]
+
+-- Set updatetime
+vim.o.updatetime = 250
+vim.wo.signcolumn = 'yes'
 
 
 -- Requires
-require 'user.colorscheme'
 require 'user.dap'
 require 'user.keybinds'
 require 'user.lsp'
@@ -90,28 +180,6 @@ require 'user.plugins'
 require 'user.style'
 require 'user.treesitter'
 
-
--- Standard settings
-vim.cmd [[
-    set autoindent
-    set backspace=eol,indent,start
-    set clipboard=unnamed
-    set colorcolumn=
-    set completeopt+=noselect
-    set completeopt-=preview
-    set expandtab
-    set exrc
-    set hidden
-    set ignorecase
-    set noswapfile
-    set nowrap
-    set number
-    set relativenumber
-    set shiftwidth=4
-    set softtabstop=4
-    set termguicolors
-    set updatetime=100
-]]
 
 
 -- Auto commands

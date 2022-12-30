@@ -1,4 +1,4 @@
-require'colorizer'.setup{}
+require'colorizer'.setup {}
 require'Comment'.setup {}
 require'coverage'.setup {}
 require'gitsigns'.setup {
@@ -12,11 +12,14 @@ require'trouble'.setup {}
 require'lint'.linters_by_ft = {
     python = {'mypy',}
 }
+require'nvim-autopairs'.setup {
+    disable_filetype = { 'TelescopePrompt', 'vim' },
+}
 
--- Copilot
+-- copilot
 vim.g.copilot_no_tab_map = true
 
--- LuaSnip
+-- luasnip
 local luasnip = require'luasnip'
 luasnip.config.set_config {
     history = true,
@@ -25,20 +28,23 @@ luasnip.config.set_config {
 }
 
 
--- Neo Test
+-- neotest
 require'neotest'.setup {
     adapters = {
+        require'neotest-jest',
         require'neotest-python' {
-            dap = {justMyCode = false},
+            dap = { justMyCode = false },
         },
+        require'neotest-rust',
         require'neotest-vim-test' {
-            ignore_filetypes = {"lua", "python", "vim"},
+            ignore_filetypes = { "lua", "python", "vim" },
         },
-    }
+    },
+    status = { enabled = false },
 }
 
 
--- Telescope
+-- telescope
 local telescope = require'telescope'
 
 telescope.setup {
