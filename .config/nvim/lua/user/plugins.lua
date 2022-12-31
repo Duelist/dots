@@ -36,9 +36,6 @@ require'neotest'.setup {
             dap = { justMyCode = false },
         },
         require'neotest-rust',
-        require'neotest-vim-test' {
-            ignore_filetypes = { "lua", "python", "vim" },
-        },
     },
     status = { enabled = false },
 }

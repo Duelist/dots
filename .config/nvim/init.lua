@@ -19,11 +19,6 @@ require('packer').startup(function(use)
     use 'antoinemadec/FixCursorHold.nvim'
     use 'github/copilot.vim'
     use 'phaazon/hop.nvim'
-    use 'rcarriga/neotest'
-    use 'rcarriga/neotest-jest'
-    use 'rcarriga/neotest-python'
-    use 'rouge8/neotest-rust'
-    use 'rcarriga/neotest-vim-test'
     use 'windwp/nvim-autopairs'
     use 'andythigpen/nvim-coverage'
     use 'mfussenegger/nvim-lint'
@@ -33,7 +28,17 @@ require('packer').startup(function(use)
     use 'tpope/vim-sleuth'
     use 'mhinz/vim-startify'
     use 'tpope/vim-surround'
-    use 'vim-test/vim-test'
+
+    -- Testing
+    use {
+        'nvim-neotest/neotest',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'haydenmeade/neotest-jest',
+            'nvim-neotest/neotest-python',
+            'rouge8/neotest-rust',
+        }
+    }
 
     -- Debugging
     use {
@@ -105,7 +110,11 @@ require('packer').startup(function(use)
     use 'nvim-lua/popup.nvim'
     use {
 	'nvim-telescope/telescope.nvim',
-	requires = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-dap.nvim', 'benfowler/telescope-luasnip.nvim' },
+	requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope-dap.nvim',
+            'benfowler/telescope-luasnip.nvim',
+        },
     }
     use {
 	'nvim-telescope/telescope-fzf-native.nvim',
@@ -188,6 +197,13 @@ vim.api.nvim_command [[
     autocmd BufWinEnter,WinEnter term://* startinsert
     autocmd BufLeave term://* stopinsert
 ]]
+-- Automatically source and re-compile packer whenever you save this init.lua
+local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
+vim.api.nvim_create_autocmd('BufWritePost', {
+  command = 'source <afile> | silent! LspStop | silent! LspStart | PackerCompile',
+  group = packer_group,
+  pattern = vim.fn.expand '$MYVIMRC',
+})
 
 
 -- Highlights
