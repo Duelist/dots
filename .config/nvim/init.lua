@@ -1,5 +1,6 @@
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local is_bootstrap = false
+
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     is_bootstrap = true
     vim.fn.system { 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path }
@@ -42,8 +43,17 @@ require('packer').startup(function(use)
 
     -- Debugging
     use {
+        'microsoft/vscode-js-debug',
+        opt = true,
+        run = 'npm install --legacy-peer-deps && npm run compile',
+    }
+    use {
         'mfussenegger/nvim-dap',
-        requires = { 'rcarriga/nvim-dap-ui', 'HiPhish/debugpy.nvim' },
+        requires = {
+            'rcarriga/nvim-dap-ui',
+            'HiPhish/debugpy.nvim',
+            'mxsdev/nvim-dap-vscode-js',
+        },
     }
 
     -- LSP
@@ -150,6 +160,9 @@ vim.wo.relativenumber = true
 
 -- Disallow line-wrapping
 vim.wo.wrap = false
+
+-- Disable highlighting of all search terms
+vim.o.hlsearch = false
 
 -- Completion options
 vim.o.completeopt = 'menuone,noselect'

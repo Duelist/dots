@@ -24,8 +24,8 @@ alias gstl='git stash list'
 alias gstp='git stash pop'
 alias gstd='git stash drop'
 
-alias chrome='google-chrome-stable &'
-alias work='cd ~/projects/fuji && source venv/bin/activate'
+alias chrome='google-chrome-stable'
+alias work='cd ~/projects/fuji && source venv/bin/activate && fnm use 19'
 
 
 ############

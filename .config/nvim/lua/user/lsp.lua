@@ -38,16 +38,18 @@ cmp.setup {
 }
 
 require'mason'.setup {}
-require'mason-lspconfig'.setup {}
+require'mason-lspconfig'.setup {
+    ensure_installed = { 'pylsp', 'tsserver' }
+}
 
-require'null-ls'.setup {
+local null_ls = require'null-ls'
+null_ls.setup {
+    debug = true,
     sources = {
-        require'null-ls'.builtins.formatting.prettier,
-        require'null-ls'.builtins.diagnostics.mypy.with({
-            extra_args = { '--ignore-missing-imports' },
-        }),
+        null_ls.builtins.formatting.prettier,
     }
 }
 
 require'lspconfig'.eslint.setup {}
+require'lspconfig'.pylsp.setup {}
 require'lspconfig'.tsserver.setup {}

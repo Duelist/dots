@@ -17,7 +17,7 @@ require'nvim-autopairs'.setup {
 }
 
 -- copilot
-vim.g.copilot_no_tab_map = true
+-- vim.g.copilot_no_tab_map = true
 
 -- luasnip
 local luasnip = require'luasnip'
