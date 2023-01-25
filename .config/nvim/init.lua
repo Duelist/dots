@@ -203,13 +203,38 @@ require 'user.style'
 require 'user.treesitter'
 
 
-
 -- Auto commands
-vim.api.nvim_command [[
-    autocmd BufWritePre * %s/\s\+$//e
-    autocmd BufWinEnter,WinEnter term://* startinsert
-    autocmd BufLeave term://* stopinsert
-]]
+vim.api.nvim_create_autocmd('BufWritePre', {
+    desc = 'Remove all trailing whitespace on save.',
+    group = vim.api.nvim_create_augroup('Duelist~All', { clear = true }),
+    command = [[%s/\s\+$//e]],
+})
+local terminal_autocmd_group = vim.api.nvim_create_augroup('Duelist~Terminal', { clear = true })
+vim.api.nvim_create_autocmd({'TermOpen'}, {
+    desc = 'Commands to execute when entering terminal buffer.',
+    group = terminal_autocmd_group,
+    callback = function()
+        vim.wo.number = false
+        vim.wo.relativenumber = false
+        vim.api.nvim_command [[startinsert]]
+    end
+})
+vim.api.nvim_create_autocmd({'BufWinEnter', 'WinEnter'}, {
+    desc = 'Commands to execute when entering terminal buffer.',
+    pattern = 'term://*',
+    group = terminal_autocmd_group,
+    callback = function()
+        vim.api.nvim_command [[startinsert]]
+    end,
+})
+vim.api.nvim_create_autocmd({'BufLeave'}, {
+    desc = 'Commands to execute when leaving a terminal buffer.',
+    pattern = 'term://*',
+    group = terminal_autocmd_group,
+    command = [[stopinsert]],
+})
+
+
 -- Automatically source and re-compile packer whenever you save this init.lua
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost', {

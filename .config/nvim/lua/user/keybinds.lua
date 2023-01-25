@@ -11,7 +11,7 @@ map('n', '<c-k>', '<c-w>k')
 map('n', '<c-l>', '<c-w>l')
 map('i', '<c-c>', '<c-[>')
 
-map('n', '<leader>q', '<cmd>bp <BAR> bd! #<cr>')
+map('n', '<leader>q', '<cmd>bd!<cr>')
 
 map('n', ';', ':')
 map('x', ';', ':')
@@ -22,7 +22,12 @@ map('t', '<c-j>', [[<c-\><c-n><c-w>j]])
 map('t', '<c-k>', [[<c-\><c-n><c-w>k]])
 map('t', '<c-l>', [[<c-\><c-n><c-w>l]])
 
+-- Replace all instances of word under cursor
 map('n', '<leader>r', ':%s/\\<<c-r><c-w>\\>/<c-r><c-w>/gI<left><left><left>')
+
+-- Terminal
+map('n', '<s-t>', '<cmd>belowright vsp<bar>te<cr><c-\\><c-n>80<c-w><bar>i')
+
 
 -------------
 -- Copilot --

@@ -37,6 +37,13 @@ require'neotest'.setup {
         },
         require'neotest-rust',
     },
+    output = { enabled = false },
+    output_panel = { enabled = false },
+    quickfix = {
+        open = function ()
+            vim.cmd [[Trouble quickfix]]
+        end,
+    },
     status = { enabled = false },
 }
 
