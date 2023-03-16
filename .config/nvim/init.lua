@@ -1,13 +1,13 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -15,9 +15,10 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-require('lazy').setup('plugins', {
-    defaults = { lazy = true },
-})
+-- Set spaces
+vim.o.expandtab = true
+vim.o.shiftwidth = 4
+vim.o.softtabstop = 4
 
 -- Set line numbers & relative numbering
 vim.wo.number = true
@@ -48,14 +49,18 @@ vim.o.breakindent = true
 -- Save undo history
 vim.o.undofile = true
 
+-- Set updatetime
+vim.o.updatetime = 250
+vim.wo.signcolumn = 'yes'
+
+require('lazy').setup('plugins', {
+    defaults = { lazy = true },
+})
+
 -- Set colorscheme
 vim.o.termguicolors = true
 vim.g.catppuccin_flavour = 'mocha'
 vim.cmd[[colorscheme catppuccin]]
-
--- Set updatetime
-vim.o.updatetime = 250
-vim.wo.signcolumn = 'yes'
 
 -- vim-startify
 vim.g.startify_custom_header = {

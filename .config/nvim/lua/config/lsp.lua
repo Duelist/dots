@@ -41,15 +41,3 @@ require'mason'.setup {}
 require'mason-lspconfig'.setup {
     ensure_installed = { 'pylsp', 'tsserver' }
 }
-
-local null_ls = require'null-ls'
-null_ls.setup {
-    debug = true,
-    sources = {
-        null_ls.builtins.formatting.prettier,
-    }
-}
-
-require'lspconfig'.eslint.setup {}
-require'lspconfig'.pylsp.setup {}
-require'lspconfig'.tsserver.setup {}

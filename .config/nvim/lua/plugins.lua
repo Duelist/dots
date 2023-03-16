@@ -1,30 +1,18 @@
 return {
     -- Colour schemes
-    { 'folke/tokyonight.nvim', branch = 'main' },
-    { 'catppuccin/nvim', as = 'catppuccin' },
+    { 'folke/tokyonight.nvim', branch = 'main', lazy = false },
+    { 'catppuccin/nvim', as = 'catppuccin', lazy = false },
 
     -- Utility
-    {'numToStr/Comment.nvim', config = true},
-    'antoinemadec/FixCursorHold.nvim',
-    'github/copilot.vim',
-    {'phaazon/hop.nvim', config = true},
-    {
-        'windwp/nvim-autopairs',
-        opts = {
-            disable_filetype = { 'TelescopePrompt', 'vim' },
-        },
-    },
-    {'andythigpen/nvim-coverage', config = true},
+    {'numToStr/Comment.nvim', config = true, event = 'VeryLazy'},
+    {'github/copilot.vim', cmd = 'Copilot'},
+    {'phaazon/hop.nvim', config = true, event = 'VeryLazy'},
     {
         'folke/trouble.nvim',
         cmd = 'Trouble',
         config = true,
     },
-    {'norcalli/nvim-colorizer.lua', config = true},
-    'junegunn/vim-easy-align',
-    'tpope/vim-sleuth',
-    'mhinz/vim-startify',
-    'tpope/vim-surround',
+    {'mhinz/vim-startify', lazy = false},
 
     -- Testing
     {
@@ -35,6 +23,7 @@ return {
             'nvim-neotest/neotest-python',
             'rouge8/neotest-rust',
         },
+        event = 'VeryLazy',
     },
 
     -- Debugging
@@ -44,6 +33,7 @@ return {
             'rcarriga/nvim-dap-ui',
             'HiPhish/debugpy.nvim',
         },
+        event = 'VeryLazy',
     },
 
     -- LSP
@@ -53,21 +43,20 @@ return {
             -- Mason
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
-        }
+        },
+        event = 'BufReadPost',
     },
 
     -- Code highlighting & navigation
-    'jose-elias-alvarez/null-ls.nvim',
     {
 	'nvim-treesitter/nvim-treesitter',
-        build = function()
-            require("nvim-treesitter.install").update { with_sync = true }
-        end,
+        build = ':TSUpdate',
+        event = 'VeryLazy',
     },
-    'nvim-treesitter/nvim-treesitter-context',
-    'nvim-treesitter/nvim-tree-docs',
-    'windwp/nvim-ts-autotag',
-    'p00f/nvim-ts-rainbow',
+    {'nvim-treesitter/nvim-treesitter-context', event = 'VeryLazy'},
+    {'nvim-treesitter/nvim-tree-docs', event = 'VeryLazy'},
+    {'windwp/nvim-ts-autotag', event = 'VeryLazy'},
+    {'p00f/nvim-ts-rainbow', event = 'VeryLazy'},
 
     -- Autocompletion
     {
@@ -79,12 +68,13 @@ return {
             'hrsh7th/cmp-nvim-lsp',
             'onsails/lspkind.nvim',
             'L3MON4D3/LuaSnip',
-        }
+        },
+        event = 'InsertEnter',
     },
 
     -- Git
-    'tpope/vim-fugitive',
-    'tpope/vim-rhubarb',
+    {'tpope/vim-fugitive', event = 'VeryLazy'},
+    {'tpope/vim-rhubarb', event = 'VeryLazy'},
     {
         'lewis6991/gitsigns.nvim',
         opts = {
@@ -93,6 +83,7 @@ return {
                 delay = 500,
             },
         },
+        event = 'BufReadPost',
     },
 
     -- Style
@@ -100,14 +91,16 @@ return {
     {
         'akinsho/bufferline.nvim',
         dependencies = 'nvim-tree/nvim-web-devicons',
+        lazy = false,
     },
 
     -- Search
-    'nvim-lua/popup.nvim',
     {
 	'nvim-telescope/telescope.nvim',
+	cmd = 'Telescope',
 	dependencies = {
             'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope-fzf-native.nvim',
             'nvim-telescope/telescope-dap.nvim',
             'benfowler/telescope-luasnip.nvim',
         },
