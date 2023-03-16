@@ -1,158 +1,23 @@
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
-local is_bootstrap = false
-
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    is_bootstrap = true
-    vim.fn.system { 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path }
-    vim.cmd [[packadd packer.nvim]]
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
-
-require('packer').startup(function(use)
-    -- Package manager
-    use 'wbthomason/packer.nvim'
-
-    -- Colour schemes
-    use { 'folke/tokyonight.nvim', branch = 'main' }
-    use { 'catppuccin/nvim', as = 'catppuccin' }
-
-    -- Utility
-    use 'numToStr/Comment.nvim'
-    use 'antoinemadec/FixCursorHold.nvim'
-    use 'github/copilot.vim'
-    use 'phaazon/hop.nvim'
-    use 'windwp/nvim-autopairs'
-    use 'andythigpen/nvim-coverage'
-    use 'mfussenegger/nvim-lint'
-    use 'folke/trouble.nvim'
-    use 'norcalli/nvim-colorizer.lua'
-    use 'junegunn/vim-easy-align'
-    use 'tpope/vim-sleuth'
-    use 'mhinz/vim-startify'
-    use 'tpope/vim-surround'
-
-    -- Testing
-    use {
-        'nvim-neotest/neotest',
-        requires = {
-            'nvim-lua/plenary.nvim',
-            'haydenmeade/neotest-jest',
-            'nvim-neotest/neotest-python',
-            'rouge8/neotest-rust',
-        }
-    }
-
-    -- Debugging
-    use {
-        'microsoft/vscode-js-debug',
-        opt = true,
-        run = 'npm install --legacy-peer-deps && npm run compile',
-    }
-    use {
-        'mfussenegger/nvim-dap',
-        requires = {
-            'rcarriga/nvim-dap-ui',
-            'HiPhish/debugpy.nvim',
-            'mxsdev/nvim-dap-vscode-js',
-        },
-    }
-
-    -- LSP
-    use {
-        'neovim/nvim-lspconfig',
-        requires = {
-            -- Mason
-            'williamboman/mason.nvim',
-            'williamboman/mason-lspconfig.nvim',
-        }
-    }
-
-    -- Code highlighting & navigation
-    use 'jose-elias-alvarez/null-ls.nvim'
-    use {
-	'nvim-treesitter/nvim-treesitter',
-        run = function()
-            require("nvim-treesitter.install").update { with_sync = true }
-        end,
-    }
-    use {
-        'nvim-treesitter/nvim-treesitter-context',
-        after = 'nvim-treesitter',
-    }
-    use {
-        'nvim-treesitter/nvim-tree-docs',
-        after = 'nvim-treesitter',
-    }
-    use {
-        'windwp/nvim-ts-autotag',
-        after = 'nvim-treesitter',
-    }
-    use {
-        'p00f/nvim-ts-rainbow',
-        after = 'nvim-treesitter',
-    }
-
-    -- Autocompletion
-    use {
-        'hrsh7th/nvim-cmp',
-        requires = {
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-cmdline',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-nvim-lsp',
-            'onsails/lspkind.nvim',
-            'L3MON4D3/LuaSnip',
-        }
-    }
-
-    -- Git
-    use 'tpope/vim-fugitive'
-    use 'tpope/vim-rhubarb'
-    use 'lewis6991/gitsigns.nvim'
-
-    -- Style
-    use 'nvim-lualine/lualine.nvim'
-    use {
-        'akinsho/bufferline.nvim',
-        requires = 'nvim-tree/nvim-web-devicons',
-    }
-
-    -- Search
-    use 'nvim-lua/popup.nvim'
-    use {
-	'nvim-telescope/telescope.nvim',
-	requires = {
-            'nvim-lua/plenary.nvim',
-            'nvim-telescope/telescope-dap.nvim',
-            'benfowler/telescope-luasnip.nvim',
-        },
-    }
-    use {
-	'nvim-telescope/telescope-fzf-native.nvim',
-	run = 'make',
-    }
-
-    if is_bootstrap then
-        require('packer').sync()
-    end
-end)
-
-
--- When we are bootstrapping a configuration, it doesn't
--- make sense to execute the rest of the init.lua.
---
--- You'll need to restart nvim, and then it will work.
-if is_bootstrap then
-  print '=================================='
-  print '    Plugins are being installed'
-  print '    Wait until Packer completes,'
-  print '       then restart nvim'
-  print '=================================='
-  return
-end
+vim.opt.rtp:prepend(lazypath)
 
 -- Set leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
+require('lazy').setup('plugins', {
+    defaults = { lazy = true },
+})
 
 -- Set line numbers & relative numbering
 vim.wo.number = true
@@ -192,15 +57,25 @@ vim.cmd[[colorscheme catppuccin]]
 vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
+-- vim-startify
+vim.g.startify_custom_header = {
+    [[    ____             ___      __ ]],
+    [[   / __ \__  _____  / (_)____/ /_]],
+    [[  / / / / / / / _ \/ / / ___/ __/]],
+    [[ / /_/ / /_/ /  __/ / (__  ) /_  ]],
+    [[/_____/\__,_/\___/_/_/____/\__/  ]],
+}
+vim.g.startify_change_to_dir = 0
+vim.g.startify_change_to_vcs_root = 1
 
 -- Requires
-require 'user.dap'
-require 'user.keybinds'
-require 'user.lsp'
-require 'user.luasnip'
-require 'user.plugins'
-require 'user.style'
-require 'user.treesitter'
+require 'plugins'
+require 'config.dap'
+require 'config.keybinds'
+require 'config.lsp'
+require 'config.luasnip'
+require 'config.style'
+require 'config.treesitter'
 
 
 -- Auto commands
@@ -233,16 +108,6 @@ vim.api.nvim_create_autocmd({'BufLeave'}, {
     group = terminal_autocmd_group,
     command = [[stopinsert]],
 })
-
-
--- Automatically source and re-compile packer whenever you save this init.lua
-local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePost', {
-  command = 'source <afile> | silent! LspStop | silent! LspStart | PackerCompile',
-  group = packer_group,
-  pattern = vim.fn.expand '$MYVIMRC',
-})
-
 
 -- Highlights
 vim.api.nvim_create_autocmd('ColorScheme', { pattern = '*', command = 'highlight Comment gui=italic cterm=italic' })

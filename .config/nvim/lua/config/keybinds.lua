@@ -1,4 +1,4 @@
-local map = require'user.utils'.map
+local map = require'utils'.map
 
 ----------
 -- Base --
