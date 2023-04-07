@@ -7,6 +7,7 @@ alias ls="exa -abghHliS"
 alias grep="grep --color=auto"
 alias mkdir="mkdir -p"
 alias dots="cd ~/dots/"
+alias shared="cd ~/shared/"
 
 alias ga='git add'
 alias gb='git branch'
@@ -28,6 +29,13 @@ alias chrome='google-chrome-stable'
 alias work='cd ~/projects/fuji && source venv/bin/activate && fnm use 19'
 
 
+#################
+# Auto-complete #
+#################
+
+autoload -Uz compinit && compinit
+
+
 ############
 # Keybinds #
 ############
@@ -35,6 +43,8 @@ alias work='cd ~/projects/fuji && source venv/bin/activate && fnm use 19'
 bindkey "^[[H"  beginning-of-line
 bindkey "^[[F"  end-of-line
 bindkey "^[[3~" delete-char
+bindkey "^[h" backward-word
+bindkey "^[l" forward-word
 
 
 ###########
@@ -53,8 +63,23 @@ export PATH="$PATH:/usr/local/bin:`yarn global bin`"
 export EDITOR=nvim
 export TERM=xterm-256color
 
-# FZF
+
+#######
+# FZF #
+#######
+
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+
+
+###########
+# History #
+###########
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=1000
+setopt SHARE_HISTORY
+
 
 #############
 # TailScale #
@@ -67,6 +92,7 @@ function ts() {
     fi
 
     echo "sudo tailscale $@"
+    return 0
 }
 autoload -Uz ts
 
@@ -158,4 +184,9 @@ function parse_git_dirty() {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(fnm env --use-on-cd)"
 
+# fnm
+export PATH="/home/ian/.fnm:$PATH"
+eval "`fnm env`"
+
+# yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/go/bin:$PATH"

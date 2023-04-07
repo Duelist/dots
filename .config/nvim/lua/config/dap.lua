@@ -5,7 +5,6 @@ local dapui = require'dapui'
 dapui.setup {}
 dap.set_log_level('TRACE');
 
-
 -- Automatically open UI
 dap.listeners.after.event_initialized['dapui_config'] = function()
   dapui.open();

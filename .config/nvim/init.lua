@@ -53,35 +53,11 @@ vim.o.undofile = true
 vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
-require('lazy').setup('plugins', {
-    defaults = { lazy = true },
-})
-
--- Set colorscheme
-vim.o.termguicolors = true
-vim.g.catppuccin_flavour = 'mocha'
-vim.cmd[[colorscheme catppuccin]]
-
--- vim-startify
-vim.g.startify_custom_header = {
-    [[    ____             ___      __ ]],
-    [[   / __ \__  _____  / (_)____/ /_]],
-    [[  / / / / / / / _ \/ / / ___/ __/]],
-    [[ / /_/ / /_/ /  __/ / (__  ) /_  ]],
-    [[/_____/\__,_/\___/_/_/____/\__/  ]],
-}
-vim.g.startify_change_to_dir = 0
-vim.g.startify_change_to_vcs_root = 1
+require('lazy').setup('plugins')
 
 -- Requires
 require 'plugins'
-require 'config.dap'
-require 'config.keybinds'
-require 'config.lsp'
-require 'config.luasnip'
-require 'config.style'
-require 'config.treesitter'
-
+require 'keybinds'
 
 -- Auto commands
 vim.api.nvim_create_autocmd('BufWritePre', {
