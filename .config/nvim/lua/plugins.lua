@@ -9,9 +9,7 @@ return {
             vim.g.catppuccin_flavour = 'mocha'
             vim.cmd.colorscheme('catppuccin')
         end,
-        lazy = false,
         name = 'catppuccin',
-        priority = 1000,
     },
 
     -- Utility
@@ -66,13 +64,19 @@ return {
     -- LSP
     {
         'neovim/nvim-lspconfig',
+        config = function()
+            require'config.lspconfig'
+        end,
         dependencies = {
             -- Mason
             {
                 'williamboman/mason.nvim',
                 config = true,
                 dependencies = {
-                    'williamboman/mason-lspconfig.nvim',
+                    {
+                        'williamboman/mason-lspconfig.nvim',
+                        config = true,
+                    },
                 },
             },
         },
