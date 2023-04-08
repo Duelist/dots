@@ -70,6 +70,7 @@ map('n', '<leader>tp', '<cmd>lua require("neotest").output_panel.toggle()<cr>')
 --------------------
 -- nvim-lspconfig --
 --------------------
+map('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<cr>')
 map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
 map('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<cr>')
 map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
