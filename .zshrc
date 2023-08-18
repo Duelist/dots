@@ -182,11 +182,17 @@ function parse_git_dirty() {
 [ -f ~/.localrc ] && source ~/.localrc
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-eval "$(fnm env --use-on-cd)"
 
 # fnm
-export PATH="/home/ian/.fnm:$PATH"
-eval "`fnm env`"
+case `uname` in
+    Darwin)
+        export PATH="~/Library/Application Support/fnm:$PATH"
+    ;;
+    Linux)
+        export PATH="~/.fnm:$PATH"
+    ;;
+esac
+eval "`fnm env --use-on-cd`"
 
 # yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/go/bin:$PATH"
