@@ -68,7 +68,7 @@ export TERM=xterm-256color
 # FZF #
 #######
 
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --ignore --files --hidden --glob "!.git/*"'
 
 
 ###########
@@ -95,6 +95,14 @@ function ts() {
     return 0
 }
 autoload -Uz ts
+
+
+########
+# Keys #
+########
+
+# export OPENAI_API_KEY="$(gpg -dq ~/shared/private/keys/chatgpt.gpg)"
+export OPENAI_API_KEY="$(cat ~/shared/private/keys/chatgpt-plus)"
 
 
 #########
@@ -196,3 +204,12 @@ eval "`fnm env --use-on-cd`"
 
 # yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/go/bin:$PATH"
+
+# fnm
+export PATH="/home/ian/.fnm:$PATH"
+eval "`fnm env`"
+
+export PATH="/home/ian/.assemblyai-cli:$PATH"
+
+# pyenv
+export PATH="$(pyenv root)/shims:$PATH"

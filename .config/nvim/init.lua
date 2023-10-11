@@ -33,6 +33,9 @@ vim.o.hlsearch = false
 -- Completion options
 vim.o.completeopt = 'menuone,noselect'
 
+-- Disable mouse
+vim.o.mouse = nil
+
 -- Use project-specfic rc files
 vim.o.exrc = true
 
