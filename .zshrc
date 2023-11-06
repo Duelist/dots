@@ -26,7 +26,7 @@ alias gstp='git stash pop'
 alias gstd='git stash drop'
 
 alias chrome='google-chrome-stable'
-alias work='cd ~/projects/fuji && source venv/bin/activate && fnm use 19'
+alias work='cd ~/projects/fuji && fnm use 19'
 
 
 #################
@@ -134,23 +134,6 @@ zinit light zsh-users/zsh-history-substring-search
 zinit light zsh-users/zsh-syntax-highlighting
 
 
-########
-# NVIM #
-########
-
-function nvimvenv {
-  if [[ -e "$VIRTUAL_ENV" && -f "$VIRTUAL_ENV/bin/activate" ]]; then
-    source "$VIRTUAL_ENV/bin/activate"
-    command nvim $@
-    deactivate
-  else
-    command nvim $@
-  fi
-}
-
-alias nvim=nvimvenv
-
-
 ##########
 # PROMPT #
 ##########
@@ -181,6 +164,19 @@ function parse_git_dirty() {
     echo "$GIT_PROMPT_CLEAN"
   fi
 }
+
+
+########
+# VENV #
+########
+
+function python_venv {
+    LOCAL_ENV=./venv
+    [[ -d $LOCAL_ENV ]] && source $LOCAL_ENV/bin/activate > /dev/null 2>&1
+    [[ ! -d $LOCAL_ENV ]] && deactivate > /dev/null 2>&1
+}
+autoload -U add-zsh-hook
+add-zsh-hook chpwd python_venv
 
 
 #############
