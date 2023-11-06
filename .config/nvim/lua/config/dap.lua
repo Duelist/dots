@@ -16,23 +16,29 @@ dap.listeners.before.event_exited['dapui_config'] = function()
   dapui.close();
 end
 
-dap.configurations.python = {
-  {
-    name = 'Python: Current file',
-    type = 'python',
+dap.adapters['pwa-node'] = {
+    type = 'server',
+    host = '127.0.0.1',
+    port = 8123,
+    executable = {
+        command = 'js-debug-adapter',
+    }
+}
+
+dap.configurations.javascript = {
+    type = 'pwa-node',
     request = 'launch',
+    name = 'Launch file',
     program = '${file}',
-    pythonPath = function()
-      -- Check for a Python executable in an existing virualenv before using
-      -- the default Python
-      local cwd = vim.fn.getcwd()
-      if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
-        return cwd .. '/venv/bin/python'
-      elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
-        return cwd .. '/.venv/bin/python'
-      else
-        return '/usr/bin/python'
-      end
-    end,
-  }
+    cwd = '${workspaceFolder}',
+    runtimeExecutable = 'node',
+}
+
+dap.configurations.typescript = {
+    type = 'pwa-node',
+    request = 'launch',
+    name = 'Launch file',
+    program = '${file}',
+    cwd = '${workspaceFolder}',
+    runtimeExecutable = 'node',
 }

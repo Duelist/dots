@@ -14,9 +14,6 @@ keymap('i', '<c-c>', '<c-[>')
 
 keymap('n', '<leader>q', '<cmd>bd!<cr>')
 
-keymap('n', ';', ':')
-keymap('x', ';', ':')
-
 -- Move between windows
 keymap('t', '<c-h>', [[<c-\><c-n><c-w>h]])
 keymap('t', '<c-j>', [[<c-\><c-n><c-w>j]])
@@ -32,9 +29,13 @@ keymap('n', '<s-t>', '<cmd>belowright vsp<bar>te<cr><c-\\><c-n>80<c-w><bar>i')
 --------
 -- AI --
 --------
-keymap('n', '<leader>agg', cmd.NeoAI, { desc = 'NeoAI' })
-keymap('x', '<leader>agg', cmd.NeoAIContext, { desc = 'NeoAI Context' })
-keymap('x', '<leader>agc', cmd.NeoAIInjectCode, { desc = 'NeoAI Inject Code' })
+keymap('n', '<leader>agg', '<cmd>ChatGPT<cr>', { desc = 'ChatGPT' })
+keymap('n', '<leader>age', '<cmd>ChatGPTEditWithInstruction<cr>', { desc = 'ChatGPT Edit w/ instruction' })
+keymap('n', '<leader>agd', '<cmd>ChatGPTRun docstring<cr>', { desc = 'ChatGPT Docstring' })
+keymap('n', '<leader>agf', '<cmd>ChatGPTRun fix_bugs<cr>', { desc = 'ChatGPT Fix bugs' })
+keymap('n', '<leader>ago', '<cmd>ChatGPTRun optimize_code<cr>', { desc = 'ChatGPT Optimize code' })
+keymap('n', '<leader>agt', '<cmd>ChatGPTRun add_tests<cr>', { desc = 'ChatGPT Add Tests' })
+keymap('n', '<leader>agx', '<cmd>ChatGPTRun explain_code<cr>', { desc = 'ChatGPT Explain code' })
 keymap('n', '<leader>acp', '<cmd>Copilot panel<cr>', { desc = 'Copilot Panel' })
 keymap('n', '<leader>acs', '<cmd>Copilot suggestion<cr>', { desc = 'Copilot Suggestion' })
 
@@ -42,11 +43,11 @@ keymap('n', '<leader>acs', '<cmd>Copilot suggestion<cr>', { desc = 'Copilot Sugg
 -- dap --
 ---------
 keymap('n', '<leader>dd', '<cmd>lua require"dapui".toggle()<cr>')
-keymap('n', '<leader>db', '<cmd>lua require"dap".toggle_breakpoint()<cr>')
-keymap('n', '<leader>dc', '<cmd>lua require"dap".continue()<cr>')
-keymap('n', '<leader>do', '<cmd>lua require"dap".step_over()<cr>')
-keymap('n', '<leader>di', '<cmd>lua require"dap".step_into()<cr>')
-keymap('n', '<leader>du', '<cmd>lua require"dap".step_out()<cr>')
+keymap('n', '<leader>db', '<cmd>DapToggleBreakpoint<cr>')
+keymap('n', '<leader>dc', '<cmd>DapContinue<cr>')
+keymap('n', '<leader>do', '<cmd>DapStepOver<cr>')
+keymap('n', '<leader>di', '<cmd>DapStepInto<cr>')
+keymap('n', '<leader>du', '<cmd>DapStepOut<cr>')
 
 ------------------
 -- fugitive.vim --

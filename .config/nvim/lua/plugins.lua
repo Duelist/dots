@@ -14,36 +14,16 @@ return {
 
     -- Utility
     {
-        'Bryley/neoai.nvim',
-        cmd = {
-            "NeoAI",
-            "NeoAIOpen",
-            "NeoAIClose",
-            "NeoAIToggle",
-            "NeoAIContext",
-            "NeoAIContextOpen",
-            "NeoAIContextClose",
-            "NeoAIInject",
-            "NeoAIInjectCode",
-            "NeoAIInjectContext",
-            "NeoAIInjectContextCode",
-        },
+        'jackMort/ChatGPT.nvim',
+        config = function()
+            require('chatgpt').setup()
+        end,
+        event = 'VeryLazy',
         dependencies = {
-            "MunifTanjim/nui.nvim",
+            'MunifTanjim/nui.nvim',
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope.nvim',
         },
-        opts = {
-            models = {
-                {
-                    name = "openai",
-                    model = "gpt-4-code-interpreter",
-                    params = nil,
-                },
-            },
-            shortcuts = {},
-            ui = {
-                width = 40,
-            }
-        }
     },
     { 'numToStr/Comment.nvim', config = true, event = 'VeryLazy' },
     {
@@ -59,34 +39,6 @@ return {
     },
     { 'stevearc/dressing.nvim', config = true, event = 'VeryLazy' },
     { 'phaazon/hop.nvim', config = true, event = 'VeryLazy' },
-    {
-        'folke/noice.nvim',
-        dependencies = {
-            'MunifTanjim/nui.nvim',
-            'rcarriga/nvim-notify',
-        },
-        event = 'VeryLazy',
-        opts = {
-            lsp = {
-                -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-                override = {
-                  ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                  ["vim.lsp.util.stylize_markdown"] = true,
-                  ["cmp.entry.get_documentation"] = true,
-                },
-            },
-            messages = {
-                enabled = false,
-            },
-            presets = {
-                bottom_search = true, -- use a classic bottom cmdline for search
-                -- command_palette = true, -- position the cmdline and popupmenu together
-                -- long_message_to_split = true, -- long messages will be sent to a split
-                -- inc_rename = false, -- enables an input dialog for inc-rename.nvim
-                -- lsp_doc_border = false, -- add a border to hover docs and signature help
-            },
-        },
-    },
     {
         'folke/trouble.nvim',
         cmd = 'Trouble',
@@ -125,12 +77,28 @@ return {
         config = function()
             require 'config.dap'
         end,
+        event = 'VeryLazy',
+    },
+    {
+        'mfussenegger/nvim-dap-python',
+        config = function(_, opts)
+            local path = '~/.local/share/nvim/mason/packages/debugpy/venv/bin/python'
+            require('dap-python').setup(path)
+        end,
         dependencies = {
+            'mfussenegger/nvim-dap',
             'rcarriga/nvim-dap-ui',
-            'HiPhish/debugpy.nvim',
+        },
+        ft = 'python',
+    },
+    {
+        'rcarriga/nvim-dap-ui',
+        dependencies = {
+            'mfussenegger/nvim-dap',
         },
         event = 'VeryLazy',
     },
+
 
     -- LSP
     {
@@ -142,11 +110,23 @@ return {
             -- Mason
             {
                 'williamboman/mason.nvim',
-                config = true,
                 dependencies = {
                     {
                         'williamboman/mason-lspconfig.nvim',
                         config = true,
+                    },
+                },
+                opts = {
+                    ensure_installed = {
+                        'debugpy',
+                        'eslint-lsp',
+                        'js-debug-adapter',
+                        'lua-language-server',
+                        'prettier',
+                        'pyright',
+                        'rust-analyzer',
+                        'tailwindcss-language-server',
+                        'typescript-language-server',
                     },
                 },
             },

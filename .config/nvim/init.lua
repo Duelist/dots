@@ -56,11 +56,16 @@ vim.o.undofile = true
 vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
-require('lazy').setup('plugins')
+-- Leader keymap
+vim.keymap.set('n', ';', ':')
+vim.keymap.set('x', ';', ':')
 
 -- Requires
-require 'plugins'
-require 'keybinds'
+if not vim.g.vscode then
+    require('lazy').setup('plugins')
+    require 'plugins'
+    require 'keybinds'
+end
 
 -- Auto commands
 vim.api.nvim_create_autocmd('BufWritePre', {
