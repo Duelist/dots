@@ -21,7 +21,7 @@ keymap('t', '<c-k>', [[<c-\><c-n><c-w>k]])
 keymap('t', '<c-l>', [[<c-\><c-n><c-w>l]])
 
 -- Replace all instances of word under cursor
-keymap('n', '<leader>r', '<cmd>%s/\\<<c-r><c-w>\\>/<c-r><c-w>/gI<left><left><left>')
+-- keymap('n', '<leader>r', '<cmd>%s/\\<<c-r><c-w>\\>/<c-r><c-w>/gI<left><left><left>')
 
 -- Terminal
 keymap('n', '<s-t>', '<cmd>belowright vsp<bar>te<cr><c-\\><c-n>80<c-w><bar>i')
@@ -80,6 +80,14 @@ keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
 keymap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<cr>')
 keymap('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<cr>')
 keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+
+----------------------
+-- refactoring.nvim --
+----------------------
+keymap('n', '<leader>rb', '<cmd>Refactor extract_block<cr>', { desc = 'Refactor extract block' })
+keymap('x', '<leader>re', '<cmd>Refactor extract<cr>', { desc = 'Refactor extract' })
+keymap('x', '<leader>rf', '<cmd>Refactor extract_to_file<cr>', { desc = 'Refactor extract to file' })
+keymap('x', '<leader>rv', '<cmd>Refactor extract_var<cr>', { desc = 'Refactor extract variable' })
 
 --------------------
 -- telescope.nvim --

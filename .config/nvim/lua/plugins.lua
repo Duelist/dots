@@ -45,6 +45,16 @@ return {
         config = true,
     },
     {
+        "ThePrimeagen/refactoring.nvim",
+        dependencies = {
+          "nvim-lua/plenary.nvim",
+          "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+          require("refactoring").setup()
+        end,
+    },
+    {
         'mhinz/vim-startify',
         config = function()
             vim.g.startify_custom_header = {
