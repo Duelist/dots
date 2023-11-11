@@ -26,7 +26,7 @@ alias gstp='git stash pop'
 alias gstd='git stash drop'
 
 alias chrome='google-chrome-stable'
-alias work='cd ~/projects/fuji && fnm use 19'
+alias work='cd ~/projects/fuji && source venv/bin/activate && fnm use 16'
 
 
 #################
@@ -59,7 +59,11 @@ export ENHANCD_DOT_SHOW_FULLPATH=1
 # Exports #
 ###########
 
-export PATH="$PATH:/usr/local/bin:`yarn global bin`"
+# case `uname` in
+#     Linux)
+#         export PATH="$PATH:/usr/local/bin"
+#     ;;
+# esac
 export EDITOR=nvim
 export TERM=xterm-256color
 
@@ -187,6 +191,14 @@ add-zsh-hook chpwd python_venv
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
+# bun completions
+[ -s "/Users/ian/.bun/_bun" ] && source "/Users/ian/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 # fnm
 case `uname` in
     Darwin)
@@ -196,7 +208,7 @@ case `uname` in
         export PATH="~/.fnm:$PATH"
     ;;
 esac
-eval "`fnm env --use-on-cd`"
+eval "`fnm env`"
 
 # yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/go/bin:$PATH"
@@ -206,6 +218,9 @@ export PATH="/home/ian/.fnm:$PATH"
 eval "`fnm env`"
 
 export PATH="/home/ian/.assemblyai-cli:$PATH"
+
+# OSX
+alias ibrew="arch -x86_64 /usr/local/bin/brew $@"
 
 # pyenv
 export PATH="$(pyenv root)/shims:$PATH"
