@@ -12,7 +12,7 @@ output DP-4
 crtc 2
 mode 1920x1080
 pos 0x0
-rate 144.00
+rate 143.85
 x-prop-non_desktop 0
 output DP-2
 crtc 0
@@ -25,5 +25,5 @@ output DP-0
 crtc 1
 mode 1920x1080
 pos 3840x0
-rate 143.98
+rate 143.85
 x-prop-non_desktop 0
