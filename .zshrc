@@ -3,7 +3,7 @@
 ###########
 
 alias vim="nvim"
-alias ls="exa -abghHliS"
+alias ls="eza -abghHliS"
 alias grep="grep --color=auto"
 alias mkdir="mkdir -p"
 alias dots="cd ~/dots/"

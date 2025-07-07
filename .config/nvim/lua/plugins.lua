@@ -84,6 +84,9 @@ return {
     -- Debugging
     {
         'mfussenegger/nvim-dap',
+        dependencies = {
+            'nvim-neotest/nvim-nio',
+        },
         config = function()
             require 'config.dap'
         end,
@@ -119,24 +122,24 @@ return {
         dependencies = {
             -- Mason
             {
-                'williamboman/mason.nvim',
+                'williamboman/mason-lspconfig.nvim',
+                config = true,
                 dependencies = {
                     {
-                        'williamboman/mason-lspconfig.nvim',
-                        config = true,
-                    },
-                },
-                opts = {
-                    ensure_installed = {
-                        'debugpy',
-                        'eslint-lsp',
-                        'js-debug-adapter',
-                        'lua-language-server',
-                        'prettier',
-                        'pyright',
-                        'rust-analyzer',
-                        'tailwindcss-language-server',
-                        'typescript-language-server',
+                        'williamboman/mason.nvim',
+                        opts = {
+                            ensure_installed = {
+                                'debugpy',
+                                'eslint-lsp',
+                                'js-debug-adapter',
+                                'lua-language-server',
+                                'prettier',
+                                'pyright',
+                                'rust-analyzer',
+                                'tailwindcss-language-server',
+                                'typescript-language-server',
+                            },
+                        },
                     },
                 },
             },
